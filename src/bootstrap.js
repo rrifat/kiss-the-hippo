@@ -1,2 +1,2 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/global';
+import './styles/global.css';
