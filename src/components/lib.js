@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
 import styled from '@emotion/styled';
+import * as mq from '../styles/media-queries';
 
 const buttonSizeVariants = {
   medium: {
@@ -40,6 +41,42 @@ export function CenteredButton({value, ...props}) {
       `}
     >
       <GradientButton {...props}>{value}</GradientButton>
+    </div>
+  );
+}
+
+export function IFrame({src, title}) {
+  return (
+    <div
+      css={css`
+        position: relative;
+        padding-top: 25px;
+        padding-bottom: 56.25%;
+        height: 0px;
+      `}
+    >
+      <iframe
+        css={css`
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          right: 0;
+          top: 25%;
+          bottom: 0;
+          /* ${mq.small} {
+            top: '80%';
+          }
+          ${mq.medium} {
+            top: '50%';
+          } */
+        `}
+        title={title}
+        src={src}
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      />
     </div>
   );
 }

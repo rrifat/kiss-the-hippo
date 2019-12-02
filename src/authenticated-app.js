@@ -5,6 +5,7 @@ import VisualQuestion from './screens/visual-question';
 import EmployeeInfo from './screens/employee-info';
 import CarouselQuestion from './screens/carousel-ques';
 import UnAuthenticatedApp from './unauthenticated-app';
+import Final from './screens/final';
 
 function AuthenticatedApp() {
   return (
@@ -14,6 +15,7 @@ function AuthenticatedApp() {
       <CarouselQuestion path="/carousel-ques" />
       <VisualQuestion path="/visual" />
       <EmployeeInfo path="/info" />
+      <Final path="/final" />
     </Router>
   );
 }
