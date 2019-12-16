@@ -1,7 +1,7 @@
 import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
 import {CenteredButton} from '../components/lib';
-// import {Link} from '@reach/router';
+import {Link} from '@reach/router';
 import {Input, Select, CheckBox} from '../components/form-input';
 import useForm from 'react-hook-form';
 
@@ -18,9 +18,10 @@ const checkboxes = [
 function EmployeeInfo() {
   let selectedCheckboxes = new Set();
   const {register, handleSubmit} = useForm();
-  const onSubmit = handleSubmit(data => {
+  const onSubmit = handleSubmit((data, e) => {
+    // e.preventDefault();
     data['summary'] = [...selectedCheckboxes];
-    console.log(data);
+    // console.log(data);
   });
 
   const handleChange = label => {
@@ -222,9 +223,9 @@ function EmployeeInfo() {
                     <Input type="number" name="nextOfKinPhone" ref={register} />
                   </div>
                 </div>
-                {/* <Link to="/health"> */}
-                <CenteredButton type="submit" value="Continue" />
-                {/* </Link> */}
+                <Link to="/questionnaires">
+                  <CenteredButton type="submit" value="Continue" />
+                </Link>
               </form>
             </div>
           </div>
@@ -239,5 +240,3 @@ function EmployeeInfo() {
   );
 }
 export default EmployeeInfo;
-
-
