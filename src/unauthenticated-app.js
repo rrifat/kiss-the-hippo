@@ -4,20 +4,30 @@ import {Link} from '@reach/router';
 function UnAuthenticatedApp() {
   return (
     <>
-      <div className="upper-left col-auto col-lg-8">
-        <img src="images/slide-pic.png" alt="" />
+      <div className="col-lg-8">
+        <img
+          src="images/slide-pic.png"
+          alt=""
+          width="90%"
+          height="80%"
+          className="fluid"
+        />
       </div>
-      <div className="upper-right col-auto col-lg-4">
+      <div className="upper-right col-lg-4">
         <div className="logo">
-          <img src="images/kiss-hippo-logo.png" alt="kiss the hippo" />
+          <img
+            src="images/kiss-hippo-logo.png"
+            alt="kiss the hippo"
+            className="fluid"
+          />
         </div>
         <div className="login-form">
           <form id="loginForm">
-            <div className="group">
+            <div className="form-group group">
               <input className="username" type="text" placeholder="Username" />
               <i className="fas fa-user icon" aria-hidden="true"></i>
             </div>
-            <div className="group">
+            <div className="form-group group">
               <input
                 className="password"
                 type="password"

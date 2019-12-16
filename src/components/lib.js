@@ -73,10 +73,83 @@ export function IFrame({src, title}) {
         `}
         title={title}
         src={src}
-        frameborder="0"
+        frameBorder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
+        allowFullScreen
       />
     </div>
+  );
+}
+
+const CarouselArrowButton = styled.button`
+  position: absolute;
+  top: 50%;
+  display: block;
+  color: #111;
+  opacity: 0.75;
+  transform: translateY(-50%);
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+  background: transparent;
+  border: none;
+  &:focus {
+    outline: 0;
+  }
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+export function CarouselLeftArrow({onClick}) {
+  return (
+    <CarouselArrowButton
+      css={css`
+        left: 32px;
+      `}
+      onClick={onClick}
+    >
+      <span className="fa fa-2x fa-angle-left" />
+    </CarouselArrowButton>
+  );
+}
+
+export function CarouselRightArrow({onClick}) {
+  return (
+    <CarouselArrowButton
+      css={css`
+        right: 32px;
+      `}
+      onClick={onClick}
+    >
+      <span className="fa fa-2x fa-angle-right" />
+    </CarouselArrowButton>
+  );
+}
+// const CarouselIndicatorButton = styled.button`
+//   display: block;
+//   width: 24px;
+//   height: 3px;
+//   background-color: #111;
+//   opacity: 0.15;
+//   transition: opacity 0.15s cubic-bezier(0.4, 0, 1, 1);
+//   &:hover {
+//     opacity: 0.5;
+//   }
+//   .carousel__indicator--active,
+//   .carousel__indicator--active:hover {
+//     opacity: 0.75;
+//   }
+// `;
+export function CarouselIndicator({index, activeIndex, handleSlide}) {
+  return (
+    <li>
+      <span
+        className={
+          index === activeIndex
+            ? 'carousel__indicator carousel__indicator--active'
+            : 'carousel__indicator'
+        }
+        onClick={() => handleSlide(index)}
+      />
+    </li>
   );
 }

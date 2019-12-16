@@ -1,8 +1,36 @@
 import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
 import {CenteredButton} from '../components/lib';
-import {Link} from '@reach/router';
+// import {Link} from '@reach/router';
+import {Input, Select, CheckBox} from '../components/form-input';
+import useForm from 'react-hook-form';
+
+const gender = [
+  {label: 'Male', value: 'male'},
+  {label: 'Female', value: 'female'},
+];
+const checkboxes = [
+  {label: 'This is my first job since 6 April', checked: false},
+  {label: 'This is now my only job', checked: false},
+  {label: 'I have another job or pension', checked: false},
+];
+
 function EmployeeInfo() {
+  let selectedCheckboxes = new Set();
+  const {register, handleSubmit} = useForm();
+  const onSubmit = handleSubmit(data => {
+    data['summary'] = [...selectedCheckboxes];
+    console.log(data);
+  });
+
+  const handleChange = label => {
+    if (selectedCheckboxes.has(label)) {
+      selectedCheckboxes.delete(label);
+    } else {
+      selectedCheckboxes.add(label);
+    }
+  };
+
   return (
     <>
       <LeftBox>
@@ -13,258 +41,190 @@ function EmployeeInfo() {
                 Please complete in all capital letter
               </h2>
               <br />
-              <form>
+              <form onSubmit={onSubmit}>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="First Name"
-                    />
+                    <Input type="text" name="firstName" ref={register} />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Last Name"
-                    />
+                    <Input type="text" name="lastName" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-9">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Address"
-                    />
+                    <Input type="text" name="address" ref={register} />
                   </div>
                   <div className="form-group col-md-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Post Code"
-                    />
+                    <Input type="text" name="postCode" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-9">
-                    <input
-                      type="date"
-                      className="form-control"
-                      placeholder="Address"
-                    />
+                    <Input type="date" name="dateOfBirth" ref={register} />
                   </div>
                   <div className="form-group col-md-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Gender"
-                    />
+                    <Select options={gender} name="gender" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Email"
-                    />
+                    <Input type="email" name="email" ref={register} />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Mobile"
-                    />
+                    <Input type="number" name="mobile" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-7">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="National insurance no."
+                    <Input
+                      type="number"
+                      name="nationalInsuranceNumber"
+                      ref={register}
                     />
                   </div>
                   <div className="form-group col-md-5">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Nationality"
-                    />
+                    <Input type="text" name="nationality" ref={register} />
                   </div>
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Proof eligibility document no."
+                  <Input
+                    type="number"
+                    name="proofEligibilityDocumentNumber"
+                    ref={register}
                   />
                 </div>
                 <div className="form-group">
-                  <input
-                    type="text"
+                  <Input
+                    type="file"
                     className="form-control"
-                    placeholder="Proof eligibility (eg. Passport, Id card. Leave blank if you don't have)"
+                    name="proofEligibility"
+                    placeholder="(eg. Passport, Id card. Leave blank if you don't have)"
+                    ref={register}
                   />
                 </div>
 
                 <div className="form-group">
-                  <input
+                  <Input
                     type="date"
-                    className="form-control"
-                    placeholder="Proof eligibility expiry date"
+                    name="proofEligibilityExpiryDate"
+                    ref={register}
                   />
                 </div>
 
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Primary work location"
+                      name="primaryWorkLocation"
+                      ref={register}
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Job title"
-                    />
+                    <Input type="text" name="jobTitle" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
-                      type="number"
-                      className="form-control"
-                      placeholder="Salary/Hourly"
-                    />
+                    <Input type="number" name="salaryOrHourly" ref={register} />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="number"
-                      className="form-control"
-                      placeholder="Salary/Per hours pay"
-                    />
+                    <Input type="text" name="salaryPerHourPay" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Employee status flexible casual"
+                      name="employeeStatusFlexibleCasual"
+                      ref={register}
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Contracted hours"
-                    />
+                    <Input type="text" name="contractedHours" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Name in the bank account"
+                      name="nameInTheBankAccount"
+                      ref={register}
                     />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Bank name"
-                    />
+                    <Input type="text" name="bankName" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Bank short code"
-                    />
+                    <Input type="text" name="bankShortCode" ref={register} />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Bank account number"
+                      name="bankAccountNumber"
+                      ref={register}
                     />
-                  </div>
-                </div>
-                <div className="form-row">
-                  <div className="form-group col-md-5 md-offset-7">
-                    <small>If you have p45, please provide a copy of p45</small>
-                    <small>otherwise fill up the p46 form</small>
                   </div>
                 </div>
 
-                <div className="form-group col-md-5">
-                  <label>Information Summary</label>
-                  <div className="check">
-                    <small>This is my first job since 6 April</small>
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
+                <div className="form-group text-center">
+                  <strong>
+                    If you have p45, please provide a copy of p45 otherwise sign
+                    the p46 form
+                  </strong>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group col-md-3">
+                    <span>P46 Information Summary</span>
                   </div>
-                  <div className="check">
-                    <small>This is my first job since 6 April</small>
-                    <input type="checkbox" />
-                    <span className="checkmark"></span>
-                  </div>
-                  <div className="check">
-                    <small>This is my first job since 6 April</small>
-                    <input type="checkbox" defaultChecked />
-                    <span className="checkmark"></span>
+                  <div className="form-group col-md-9">
+                    {checkboxes.map((checkbox, index) => (
+                      <div className="form-check" key={index}>
+                        <CheckBox
+                          type="checkbox"
+                          name="summary"
+                          checked={checkbox.checked}
+                          label={checkbox.label}
+                          ref={register}
+                          handleChange={handleChange}
+                        />
+                      </div>
+                    ))}
                   </div>
                 </div>
 
                 <div className="form-row">
                   <div className="form-group col-md-4">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Reporting manager title"
+                      name="reportingManagerTitle"
+                      ref={register}
                     />
                   </div>
                   <div className="form-group col-md-4">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Next of kin name"
-                    />
+                    <Input type="text" name="nextOfKinName" ref={register} />
                   </div>
                   <div className="form-group col-md-4">
-                    <input
+                    <Input
                       type="text"
-                      className="form-control"
-                      placeholder="Relationship with next of kin"
+                      name="relationshipWithNextOfKin"
+                      ref={register}
                     />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <input
-                      type="email"
-                      className="form-control"
-                      placeholder="Next of kin email"
-                    />
+                    <Input type="email" name="nextOfKinEmail" ref={register} />
                   </div>
                   <div className="form-group col-md-6">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Next of kin phone"
-                    />
+                    <Input type="number" name="nextOfKinPhone" ref={register} />
                   </div>
                 </div>
-                <Link to="/health">
-                  <CenteredButton type="submit" value="Continue" />
-                </Link>
+                {/* <Link to="/health"> */}
+                <CenteredButton type="submit" value="Continue" />
+                {/* </Link> */}
               </form>
             </div>
           </div>
@@ -279,3 +239,5 @@ function EmployeeInfo() {
   );
 }
 export default EmployeeInfo;
+
+

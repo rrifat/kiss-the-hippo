@@ -1,40 +1,7 @@
 import React from 'react';
+import {CarouselLeftArrow, CarouselRightArrow, CarouselIndicator} from './lib';
 
-function CarouselLeftArrow({onClick}) {
-  return (
-    <button className="carousel__arrow carousel__arrow--left" onClick={onClick}>
-      <span className="fa fa-2x fa-angle-left" />
-    </button>
-  );
-}
-
-function CarouselRightArrow({onClick}) {
-  return (
-    <button
-      className="carousel__arrow carousel__arrow--right"
-      onClick={onClick}
-    >
-      <span className="fa fa-2x fa-angle-right" />
-    </button>
-  );
-}
-
-function CarouselIndicator({index, activeIndex, onClick}) {
-  return (
-    <li>
-      <button
-        className={
-          index === activeIndex
-            ? 'carousel__indicator carousel__indicator--active'
-            : 'carousel__indicator'
-        }
-        onClick={onClick}
-      />
-    </li>
-  );
-}
-
-function CarouselSlide({index, activeIndex, slide}) {
+function CarouselSlide({index, activeIndex, slide, name}) {
   return (
     <li
       className={
@@ -44,17 +11,18 @@ function CarouselSlide({index, activeIndex, slide}) {
       }
     >
       <p className="carousel-slide__content">{slide.question}</p>
-      <form>
-        <ul>
-          {slide.options.map((option, index) => (
-            <li className="carousel-slide__author" key={index}>
-              <input type="checkbox" className="form-check form-check-inline" />
-              <label>{option}</label>
-              <br />
-            </li>
-          ))}
-        </ul>
-      </form>
+
+      {slide.options.map((option, key) => (
+        <div className="form-check" key={key}>
+          <input
+            className="form-check-input"
+            type="radio"
+            name={name}
+            value={option}
+          />
+          <label className="form-check-label">{option}</label>
+        </div>
+      ))}
     </li>
   );
 }
@@ -71,13 +39,10 @@ function Carousel({slides}) {
     e.preventDefault();
     let index = activeIndex;
     const slidesLength = slides.length;
-
     if (index < 1) {
       index = slidesLength;
     }
-
     --index;
-
     setActiveIndex(index);
   }
 
@@ -85,33 +50,28 @@ function Carousel({slides}) {
     e.preventDefault();
     let index = activeIndex;
     const slidesLength = slides.length - 1;
-
     if (index === slidesLength) {
       index = -1;
     }
-
     ++index;
-
     setActiveIndex(index);
   }
 
   return (
     <div className="carousel">
-      <CarouselLeftArrow onClick={goToPrevSlide} />
-
       <ul className="carousel__slides">
         {slides.map((slide, index) => (
           <CarouselSlide
-            key={index}
+            key={slide.name}
             index={index}
             activeIndex={activeIndex}
             slide={slide}
+            name={slide.name}
           />
         ))}
       </ul>
-
+      <CarouselLeftArrow onClick={goToPrevSlide} />
       <CarouselRightArrow onClick={goToNextSlide} />
-
       <ul className="carousel__indicators">
         {slides.map((slide, index) => (
           <CarouselIndicator
@@ -119,7 +79,7 @@ function Carousel({slides}) {
             index={index}
             activeIndex={activeIndex}
             isActive={activeIndex === index}
-            onClick={() => goToSlide(index)}
+            handleSlide={goToSlide}
           />
         ))}
       </ul>
