@@ -153,3 +153,21 @@ export function CarouselIndicator({index, activeIndex, handleSlide}) {
     </li>
   );
 }
+
+export const DivWithScroll = styled.div`
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    width: 0.8em;
+    background-color: #f6efed;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #551120;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f6efed;
+  }
+`;
