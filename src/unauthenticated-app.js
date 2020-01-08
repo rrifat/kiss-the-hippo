@@ -4,7 +4,7 @@ import {Link} from '@reach/router';
 function UnAuthenticatedApp() {
   return (
     <>
-      <div className="col-lg-8">
+      <div className="col-sm-6">
         <img
           src="images/slide-pic.png"
           alt=""
@@ -13,7 +13,7 @@ function UnAuthenticatedApp() {
           className="fluid"
         />
       </div>
-      <div className="upper-right col-lg-4">
+      <div className="upper-right col-sm-3 offset-sm-2">
         <div className="logo">
           <img
             src="images/kiss-hippo-logo.png"

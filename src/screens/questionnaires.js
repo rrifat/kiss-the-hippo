@@ -19,19 +19,19 @@ function Questionnaires() {
     setPage(pages[0]);
   }, []);
 
-  const handlePage = (e, nextPageRenderType) => {
-    e.preventDefault();
+  // const handlePage = (e, nextPageRenderType) => {
+  //   e.preventDefault();
     
-    if (nextPageRenderType === 'essay') {
-      setPage(pages[1]);
-    }
-    if (nextPageRenderType === 'video') {
-      setPage(pages[2]);
-    }
-    if (nextPageRenderType === 'final') {
-      setPage({});
-    }
-  };
+  //   if (nextPageRenderType === 'essay') {
+  //     setPage(pages[1]);
+  //   }
+  //   if (nextPageRenderType === 'video') {
+  //     setPage(pages[2]);
+  //   }
+  //   if (nextPageRenderType === 'final') {
+  //     setPage({});
+  //   }
+  // };
 
   const renderLeftSideContent = () => {
     switch (contentType) {
@@ -39,7 +39,7 @@ function Questionnaires() {
         return (
           <HealthLeft
             page={page}
-            handleNextPageRender={e => handlePage(e, 'essay')}
+            // handleNextPageRender={e => handlePage(e, 'essay')}
           />
         );
       case ESSAY_QUESTIONNAIRES:
@@ -58,14 +58,14 @@ function Questionnaires() {
         return (
           <Exercise
             page={page}
-            handleNextPageRender={e => handlePage(e, 'video')}
+            // handleNextPageRender={e => handlePage(e, 'video')}
           />
         );
       case VIDEO_QUESTIONNAIRES:
         return (
           <Exercise
             page={page}
-            handleNextPageRender={e => handlePage(e, 'final')}
+            // handleNextPageRender={e => handlePage(e, 'final')}
           />
         );
       default:

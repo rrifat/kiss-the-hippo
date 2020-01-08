@@ -1,8 +1,9 @@
 import React from 'react';
 import {CenteredButton} from '../components/lib';
 import Question from '../components/question';
+import {Link} from '@reach/router';
 
-function HealthLeft({page, handleNextPageRender}) {
+function HealthLeft({page}) {
   const {
     subtitle = '',
     question_heading: questionHeading = '',
@@ -10,7 +11,7 @@ function HealthLeft({page, handleNextPageRender}) {
     instruction = '',
   } = page;
   return (
-    <form onSubmit={handleNextPageRender}>
+    <form>
       <div className="form-group">
         <label htmlFor="historyOfIllness">{subtitle}</label>
         <textarea
@@ -32,7 +33,9 @@ function HealthLeft({page, handleNextPageRender}) {
           />
         </div>
       ))}
-      <CenteredButton type="submit" value="Continue" />
+      <Link to="/jcl">
+        <CenteredButton type="submit" value="Continue" />
+      </Link>
     </form>
   );
 }

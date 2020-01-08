@@ -44,46 +44,46 @@ function EmployeeInfo() {
               <br />
               <form onSubmit={onSubmit}>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="firstName" ref={register} />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="lastName" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-9">
+                  <div className="form-group col-lg-9">
                     <Input type="text" name="address" ref={register} />
                   </div>
-                  <div className="form-group col-md-3">
+                  <div className="form-group col-lg-3">
                     <Input type="text" name="postCode" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-9">
+                  <div className="form-group col-lg-9">
                     <Input type="date" name="dateOfBirth" ref={register} />
                   </div>
-                  <div className="form-group col-md-3">
+                  <div className="form-group col-lg-3">
                     <Select options={gender} name="gender" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="email" name="email" ref={register} />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="number" name="mobile" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-7">
+                  <div className="form-group col-lg-7">
                     <Input
                       type="number"
                       name="nationalInsuranceNumber"
                       ref={register}
                     />
                   </div>
-                  <div className="form-group col-md-5">
+                  <div className="form-group col-lg-5">
                     <Input type="text" name="nationality" ref={register} />
                   </div>
                 </div>
@@ -97,7 +97,7 @@ function EmployeeInfo() {
                 <div className="form-group">
                   <Input
                     type="file"
-                    className="form-control"
+                    className="form-control-file"
                     name="proofEligibility"
                     placeholder="(eg. Passport, Id card. Leave blank if you don't have)"
                     ref={register}
@@ -113,14 +113,14 @@ function EmployeeInfo() {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="primaryWorkLocation"
                       ref={register}
                     />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="jobTitle" ref={register} />
                   </div>
                 </div>
@@ -128,39 +128,39 @@ function EmployeeInfo() {
                   <div className="form-group col-md-6">
                     <Input type="number" name="salaryOrHourly" ref={register} />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="salaryPerHourPay" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="employeeStatusFlexibleCasual"
                       ref={register}
                     />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="contractedHours" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="nameInTheBankAccount"
                       ref={register}
                     />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="bankName" ref={register} />
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="bankShortCode" ref={register} />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="bankAccountNumber"
@@ -177,10 +177,10 @@ function EmployeeInfo() {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group col-md-3">
+                  <div className="form-group col-lg-3">
                     <span>P46 Information Summary</span>
                   </div>
-                  <div className="form-group col-md-9">
+                  <div className="form-group col-lg-9">
                     {checkboxes.map((checkbox, index) => (
                       <div className="form-check" key={index}>
                         <CheckBox
@@ -197,17 +197,17 @@ function EmployeeInfo() {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group col-md-4">
+                  <div className="form-group col-lg-4">
                     <Input
                       type="text"
                       name="reportingManagerTitle"
                       ref={register}
                     />
                   </div>
-                  <div className="form-group col-md-4">
+                  <div className="form-group col-lg-4">
                     <Input type="text" name="nextOfKinName" ref={register} />
                   </div>
-                  <div className="form-group col-md-4">
+                  <div className="form-group col-lg-4">
                     <Input
                       type="text"
                       name="relationshipWithNextOfKin"
@@ -216,10 +216,10 @@ function EmployeeInfo() {
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="email" name="nextOfKinEmail" ref={register} />
                   </div>
-                  <div className="form-group col-md-6">
+                  <div className="form-group col-lg-6">
                     <Input type="number" name="nextOfKinPhone" ref={register} />
                   </div>
                 </div>
