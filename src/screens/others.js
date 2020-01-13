@@ -88,7 +88,7 @@ export default function Others() {
           </p>
           <input type="date" className="form-control mb-3" />
         </div>
-        <Link to="/final">
+        <Link to="/nutshell">
           <CenteredButton type="submit" value="submit" />
         </Link>
       </div>

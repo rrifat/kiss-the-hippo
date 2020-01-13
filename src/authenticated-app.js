@@ -12,6 +12,7 @@ import UniformPolicy from './screens/uniform-policy';
 import EmployeeDiscount from './screens/employee-discount';
 import Others from './screens/others';
 import Final from './screens/final';
+import Nutshell from './screens/nutshell';
 
 function AuthenticatedApp() {
   return (
@@ -28,6 +29,7 @@ function AuthenticatedApp() {
       <EmployeeDiscount path="employee-discount" />
       <Others path="others" />
       <Final path="final" />
+      <Nutshell path="nutshell" />
     </Router>
   );
 }

@@ -3,9 +3,7 @@ import {jsx, css} from '@emotion/core';
 import styled from '@emotion/styled';
 import {CenteredButton, DivWithScroll} from '../components/lib';
 import {Link} from '@reach/router';
-// const BaseInput = ({className, type}) => (
-//   <input type={type} className={className} />
-// );
+
 const Input = styled.input`
   border: none;
   border-bottom: 2px solid grey;

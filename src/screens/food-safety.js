@@ -558,7 +558,6 @@ export default function FoodSafety() {
   );
 }
 function MultipleChoices({options, question}) {
-  const [[value1, label1], [value2, label2]] = Object.entries(options);
   return (
     <div
       class="form-group"
@@ -569,24 +568,17 @@ function MultipleChoices({options, question}) {
     >
       <label class="form-check-label">{question}</label>
       &nbsp; &nbsp;
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="contamination"
-          value={value1}
-        />
-        <label class="form-check-label">{label1}</label>
-      </div>
-      <div class="form-check form-check-inline">
-        <input
-          class="form-check-input"
-          type="radio"
-          name="contamination"
-          value={value2}
-        />
-        <label class="form-check-label">{label2}</label>
-      </div>
+      {Object.entries(options).map(([val, label], index) => (
+        <div class="form-check form-check-inline" key={index}>
+          <input
+            class="form-check-input"
+            type="radio"
+            name="contamination"
+            value={val}
+          />
+          <label class="form-check-label">{label}</label>
+        </div>
+      ))}
     </div>
   );
 }

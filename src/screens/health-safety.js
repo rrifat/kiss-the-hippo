@@ -1,20 +1,17 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
 import SafetyTwo from './safety-two';
-import {CenteredButton} from '../components/lib';
-import { Link } from '@reach/router';
+import {CenteredButton, DivWithScroll} from '../components/lib';
+import {Link} from '@reach/router';
 
 export default function HealthSafety() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row col-sm-9">
-          <h3>Health and Safety Essential</h3>
+          <div className="pt-5 pb-3">
+            <h3>Health and Safety Essential</h3>
+          </div>
           <p>
             Please study the notes carefully and raise any questions that you
             have with your manager.
@@ -491,6 +488,6 @@ export default function HealthSafety() {
           </form>
         </div>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }
