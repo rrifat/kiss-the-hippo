@@ -1,16 +1,20 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-// import React from 'react';
+import * as mq from '../styles/media-queries';
 
 function RightBox({children}) {
   return (
     <div
-      className="row col-lg-5"
-      style={{
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className="row col-xl-5"
+      css={css`
+        display: none;
+        ${mq.large} {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          display: flex;
+        }
+      `}
     >
       {children}
     </div>
@@ -20,7 +24,7 @@ function RightBox({children}) {
 function LeftBox({children}) {
   return (
     <div
-      className="col-md-7 h-100"
+      className="col-xl-7 col-12 h-100"
       css={css`
         overflow-y: scroll;
         &::-webkit-scrollbar {

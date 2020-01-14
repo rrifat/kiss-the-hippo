@@ -1,6 +1,5 @@
 import React from 'react';
 import {Router} from '@reach/router';
-import Questionnaires from './screens/questionnaires';
 import EmployeeInfo from './screens/employee-info';
 import UnAuthenticatedApp from './unauthenticated-app';
 import JobContractLetter from './screens/job-contract-letter';
@@ -13,13 +12,14 @@ import EmployeeDiscount from './screens/employee-discount';
 import Others from './screens/others';
 import Final from './screens/final';
 import Nutshell from './screens/nutshell';
+import HealthQuestionnaires from './screens/health-questionnaires';
 
 function AuthenticatedApp() {
   return (
     <Router className="row h-100 w-100">
       <UnAuthenticatedApp path="/" />
-      <EmployeeInfo path="/info" />
-      <Questionnaires path="/questionnaires" />
+      <EmployeeInfo path="info" />
+      <HealthQuestionnaires path="h-question" />
       <JobContractLetter path="jcl" />
       <HealthSafety path="h-safety" />
       <FoodSafety path="f-safety" />

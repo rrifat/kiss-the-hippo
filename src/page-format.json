@@ -12,7 +12,15 @@
         "question": "Tuberculosis, pleurisy, asthma, bronchitis, or any other lung, throat or ear complaint, including deafness.",
         "type": "mutiple choice",
         "options": ["yes", "no"],
-        "correct_answer": "abc",
+        "correct_answer": "yes",
+        "employee_answer": "xyz"
+      },
+      {
+        "name": "healthQuesTwo",
+        "question": "",
+        "type": "mutiple choice",
+        "options": ["yes", "no"],
+        "correct_answer": "no",
         "employee_answer": "xyz"
       }
     ]

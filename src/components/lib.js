@@ -171,3 +171,11 @@ export const DivWithScroll = styled.div`
     background-color: #f6efed;
   }
 `;
+
+export const ErrorText = styled.p`
+  color: #bf1650;
+  &::before {
+    display: inline;
+    content: '⚠ ';
+  }
+`;

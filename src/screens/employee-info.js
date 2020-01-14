@@ -1,10 +1,9 @@
 import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
-import {CenteredButton} from '../components/lib';
-import {Link} from '@reach/router';
+import {CenteredButton, ErrorText} from '../components/lib';
 import {Input, Select, CheckBox} from '../components/form-input';
 import useForm from 'react-hook-form';
-
+import * as yup from 'yup';
 const gender = [
   {label: 'Male', value: 'male'},
   {label: 'Female', value: 'female'},
@@ -14,14 +13,47 @@ const checkboxes = [
   {label: 'This is now my only job', checked: false},
   {label: 'I have another job or pension', checked: false},
 ];
+const EmployeeInfoSchema = yup.object().shape({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  address: yup.string().required(),
+  postCode: yup.string().required(),
+  dateOfBirth: yup.string().required(),
+  gender: yup.string().required(),
+  email: yup.string().required(),
+  mobile: yup.string().required(),
+  nationalInsuranceNumber: yup.string().required(),
+  nationality: yup.string().required(),
+  proofEligibilityDocumentNumber: yup.string().required(),
+  proofEligibility: yup.string().required(),
+  proofEligibilityExpiryDate: yup.string().required(),
+  primaryWorkLocation: yup.string().required(),
+  jobTitle: yup.string().required(),
+  salaryOrHourly: yup.string().required(),
+  salaryPerHourPay: yup.string().required(),
+  employeeStatusFlexibleCasual: yup.string().required(),
+  contractedHours: yup.string().required(),
+  nameInTheBankAccount: yup.string().required(),
+  bankName: yup.string().required(),
+  bankShortCode: yup.string().required(),
+  bankAccountNumber: yup.string().required(),
+  reportingManagerTitle: yup.string().required(),
+  relationshipWithNextOfKin: yup.string().required(),
+  nextOfKinEmail: yup.string().required(),
+  nextOfKinPhone: yup.string().required(),
+});
 
 function EmployeeInfo() {
   let selectedCheckboxes = new Set();
-  const {register, handleSubmit} = useForm();
+  const [eligibilityImgFile, setEligibilityImgFile] = React.useState();
+  const {register, handleSubmit, errors} = useForm({
+    validationSchema: EmployeeInfoSchema,
+  });
   const onSubmit = handleSubmit((data, e) => {
-    // e.preventDefault();
+    e.preventDefault();
     data['summary'] = [...selectedCheckboxes];
-    // console.log(data);
+    data['proofEligibility'] = eligibilityImgFile;
+    console.log(data);
   });
 
   const handleChange = label => {
@@ -46,17 +78,29 @@ function EmployeeInfo() {
                 <div className="form-row">
                   <div className="form-group col-lg-6">
                     <Input type="text" name="firstName" ref={register} />
+                    {errors.firstName && (
+                      <ErrorText>{errors.firstName.message}</ErrorText>
+                    )}
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="text" name="lastName" ref={register} />
+                    {errors.lastName && (
+                      <ErrorText>{errors.lastName.message}</ErrorText>
+                    )}
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-lg-9">
                     <Input type="text" name="address" ref={register} />
+                    {errors.address && (
+                      <ErrorText>{errors.address.message}</ErrorText>
+                    )}
                   </div>
                   <div className="form-group col-lg-3">
                     <Input type="text" name="postCode" ref={register} />
+                    {errors.postCode && (
+                      <ErrorText>{errors.postCode.message}</ErrorText>
+                    )}
                   </div>
                 </div>
                 <div className="form-row">
@@ -78,7 +122,7 @@ function EmployeeInfo() {
                 <div className="form-row">
                   <div className="form-group col-lg-7">
                     <Input
-                      type="number"
+                      type="text"
                       name="nationalInsuranceNumber"
                       ref={register}
                     />
@@ -89,7 +133,7 @@ function EmployeeInfo() {
                 </div>
                 <div className="form-group">
                   <Input
-                    type="number"
+                    type="text"
                     name="proofEligibilityDocumentNumber"
                     ref={register}
                   />
@@ -101,6 +145,16 @@ function EmployeeInfo() {
                     name="proofEligibility"
                     placeholder="(eg. Passport, Id card. Leave blank if you don't have)"
                     ref={register}
+                    onChange={e => {
+                      let file = e.target.files[0];
+                      let reader = new FileReader();
+                      reader.addEventListener('load', () => {
+                        setEligibilityImgFile(reader.result);
+                      });
+                      if (file) {
+                        reader.readAsDataURL(file);
+                      }
+                    }}
                   />
                 </div>
 
@@ -126,10 +180,14 @@ function EmployeeInfo() {
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
-                    <Input type="number" name="salaryOrHourly" ref={register} />
+                    <Input type="text" name="salaryOrHourly" ref={register} />
                   </div>
                   <div className="form-group col-lg-6">
-                    <Input type="text" name="salaryPerHourPay" ref={register} />
+                    <Input
+                      type="number"
+                      name="salaryPerHourPay"
+                      ref={register}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
@@ -223,9 +281,9 @@ function EmployeeInfo() {
                     <Input type="number" name="nextOfKinPhone" ref={register} />
                   </div>
                 </div>
-                <Link to="/questionnaires">
-                  <CenteredButton type="submit" value="Continue" />
-                </Link>
+                {/* <Link to="/questionnaires"> */}
+                <CenteredButton type="submit" value="Continue" />
+                {/* </Link> */}
               </form>
             </div>
           </div>

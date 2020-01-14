@@ -1,6 +1,5 @@
 import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
-import {HealthLeft, HealthRight} from './health';
 import Comprehension from './comprehension-exercises';
 import Visual from './visual';
 import Exercise from '../components/exercise';
@@ -21,7 +20,7 @@ function Questionnaires() {
 
   // const handlePage = (e, nextPageRenderType) => {
   //   e.preventDefault();
-    
+
   //   if (nextPageRenderType === 'essay') {
   //     setPage(pages[1]);
   //   }
@@ -36,12 +35,7 @@ function Questionnaires() {
   const renderLeftSideContent = () => {
     switch (contentType) {
       case HEALTH_QUESTIONNAIRES:
-        return (
-          <HealthLeft
-            page={page}
-            // handleNextPageRender={e => handlePage(e, 'essay')}
-          />
-        );
+        return;
       case ESSAY_QUESTIONNAIRES:
         return <Comprehension page={page} />;
       case VIDEO_QUESTIONNAIRES:
@@ -53,7 +47,7 @@ function Questionnaires() {
   const renderRightSideContent = () => {
     switch (contentType) {
       case HEALTH_QUESTIONNAIRES:
-        return <HealthRight />;
+        return;
       case ESSAY_QUESTIONNAIRES:
         return (
           <Exercise
