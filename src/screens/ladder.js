@@ -1,20 +1,17 @@
 /**@jsx jsx */
-import {jsx, css} from '@emotion/core';
+import {jsx} from '@emotion/core';
 import {Link} from '@reach/router';
-import {CenteredButton} from '../components/lib';
+import {CenteredButton, DivWithScroll} from '../components/lib';
 
 export default function Ladder() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row">
           <div class="col-sm-9 ">
-            <h3 class="font-weight-bold text-center mb-3">Ladder Policy</h3>
+            <div className="pt-5 pb-3">
+              <h3 class="font-weight-bold text-center mb-3">Ladder Policy</h3>
+            </div>
             <p>Before you use a ladder, you must check for;</p>
             <h6 class="text-uppercase">GENERAL CONDITION</h6>
             <p>
@@ -162,6 +159,6 @@ export default function Ladder() {
           <CenteredButton type="submit" value="submit" />
         </Link>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }

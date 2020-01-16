@@ -30,9 +30,9 @@ export default function JobContractLetter() {
         </div>
         <div className="row col-md-4">
           <strong>
-            Kiss The Hippo 50 George Street,
+            Kiss The Hippo
             <br />
-            Richmond,
+            50 George Street, Richmond,
             <br />
             TW9 1HJ
           </strong>
@@ -45,7 +45,11 @@ export default function JobContractLetter() {
                 Employs&nbsp;&nbsp;
               </label>
               <div className="col-auto">
-                <Input type="text" className="form-control" />
+                <Input
+                  type="text"
+                  className="form-control"
+                  placeholder="name"
+                />
               </div>
             </div>
             <div className="form-group row no-gutters">
@@ -56,8 +60,8 @@ export default function JobContractLetter() {
                 <Input type="date" className="form-control" />
               </div>
               <label className="col-form-label">
-                &nbsp;&nbsp;No previous employment counts as part of your period
-                of continuous employment.
+                No previous employment counts as part of your period of
+                continuous employment.
               </label>
             </div>
             <p>
@@ -79,7 +83,7 @@ export default function JobContractLetter() {
                 <Input type="text" className="form-control" />
               </div>
               <label className="col-form-label">
-                &nbsp;&nbsp;and your duties will be as advised by your Manager.
+                and your duties will be as advised by your Manager.
               </label>
             </div>
             <p>
@@ -106,14 +110,14 @@ export default function JobContractLetter() {
             <h6 className="font-weight-bold">HOURS OF WORK</h6>
             <div className="form-group row no-gutters">
               <label className="col-form-label">
-                Your normal hours of work are normally&nbsp;&nbsp;&nbsp;
+                Your normal hours of work are normally&nbsp;&nbsp;
               </label>
               <div className="col-1">
                 <Input type="number" className="form-control" />
               </div>
               <label className="col-form-label">
-                &nbsp;&nbsp;per week, Monday to Sunday with agreed minutes of
-                paid/ unpaid break each shift /day.
+                per week, Monday to Sunday with agreed minutes of paid/ unpaid
+                break each shift /day.
               </label>
               <label className="col-form-label">
                 You will usually be expected to work&nbsp;&nbsp;&nbsp;
@@ -122,8 +126,8 @@ export default function JobContractLetter() {
                 <Input type="number" className="form-control" />
               </div>
               <label className="col-form-label">
-                &nbsp;&nbsp;days from seven days. Actual days, start/finish
-                times will be variable and in accordance with the rota.
+                days from seven days. Actual days, start/finish times will be
+                variable and in accordance with the rota.
               </label>
               <label className="col-form-label">
                 You may be required to work additional hours when authorised and
@@ -148,8 +152,8 @@ export default function JobContractLetter() {
                 <Input type="number" className="form-control" />
               </div>
               <label className="col-form-label">
-                &nbsp;&nbsp; per hour/ annum payable monthly by BACS monthly in
-                arrears as detailed on your pay statement.
+                per hour/ annum payable monthly by BACS monthly in arrears as
+                detailed on your pay statement.
               </label>
             </div>
             <p>

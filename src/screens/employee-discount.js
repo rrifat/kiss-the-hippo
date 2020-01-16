@@ -1,22 +1,19 @@
 /**@jsx jsx */
-import {jsx, css} from '@emotion/core';
+import {jsx} from '@emotion/core';
 import {Link} from '@reach/router';
-import {CenteredButton} from '../components/lib';
+import {CenteredButton, DivWithScroll} from '../components/lib';
 
 export default function EmployeeDiscount() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row">
           <div class="col-sm-9 mb-3">
-            <h3 class="text-uppercase text-center">
-              <strong>EMPLOYEE DISCOUNT POLICY</strong>
-            </h3>
+            <div className="pt-5 pb-3">
+              <h3 class="text-uppercase text-center">
+                <strong>EMPLOYEE DISCOUNT POLICY</strong>
+              </h3>
+            </div>
             <h6 class="pb-2">
               <strong> Discounts on the shift:</strong>
             </h6>
@@ -106,6 +103,6 @@ export default function EmployeeDiscount() {
           <CenteredButton type="submit" value="submit" />
         </Link>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }

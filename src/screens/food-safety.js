@@ -1,27 +1,26 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-import {CenteredButton} from '../components/lib';
+import {CenteredButton, DivWithScroll} from '../components/lib';
 import {Link} from '@reach/router';
 
 export default function FoodSafety() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row col-sm-9">
           <div name="title">
-            <h3>Food Handlers Essential Food Hygiene</h3>
+            <div className="pt-5 pb-3">
+              <h3>Food Handlers Essential Food Hygiene</h3>
+            </div>
             <p>
               These notes have been prepared to help you understand the
               ‘essentials’ of food hygiene.
             </p>
             <p>
-              Please study the notes carefully and raise any questions that you
-              have with your manager.
+              <b>
+                Please study the notes carefully and raise any questions that
+                you have with your manager.
+              </b>
             </p>
             <p>
               When you have read the notes, please sign and date the
@@ -38,6 +37,7 @@ export default function FoodSafety() {
                 make a note of it here:
               </p>
               <input type="text" className="form-control" />
+              <br />
               <p>It is a document which contains:</p>
               <ol type="a">
                 <li>a signed Statement of Policy;</li>
@@ -554,7 +554,7 @@ export default function FoodSafety() {
           </form>
         </div>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }
 function MultipleChoices({options, question}) {

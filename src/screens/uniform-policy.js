@@ -1,22 +1,19 @@
 /**@jsx jsx */
-import {jsx, css} from '@emotion/core';
+import {jsx} from '@emotion/core';
 import {Link} from '@reach/router';
-import {CenteredButton} from '../components/lib';
+import {CenteredButton, DivWithScroll} from '../components/lib';
 
 export default function UniformPolicy() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row">
           <div class="col-sm-9 mb-2 text-center">
-            <h3 class="mb-4">
-              <strong>Uniform Acceptance Form</strong>
-            </h3>
+            <div className="pt-5 pb-3">
+              <h3 class="mb-4">
+                <strong>Uniform Acceptance Form</strong>
+              </h3>
+            </div>
           </div>
           <div class="col-sm-9 mb-4">
             <p>The following 6 items have been receved in good condition.</p>
@@ -29,7 +26,7 @@ export default function UniformPolicy() {
           </div>
           <div class="col-sm-9 mb-4">
             <p>
-              Every item is worth &euro;25 and should be handed back to the
+              Every item is worth &pound; 25 and should be handed back to the
               Company in the end of the employment. In the event of loss of
               items, we have the contractual right to duduct such costs from
               your last pay.
@@ -40,6 +37,6 @@ export default function UniformPolicy() {
           <CenteredButton type="submit" value="submit" />
         </Link>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }

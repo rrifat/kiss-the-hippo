@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
 import {CenteredButton, DivWithScroll} from '../components/lib';
-import { Link } from '@reach/router';
+import {Link} from '@reach/router';
 
 export default function Nutshell() {
   return (
@@ -313,7 +313,6 @@ export default function Nutshell() {
               <ol
                 css={css`
                   padding-left: 50px;
-                  color: red;
                 `}
               >
                 <li>
@@ -391,7 +390,6 @@ export default function Nutshell() {
               <ol
                 css={css`
                   padding-left: 50px;
-                  color: red;
                 `}
               >
                 <li>
@@ -491,9 +489,7 @@ function MultipleChoices({name, options = {}, question}) {
     <div
       class="form-group"
       css={css`
-        /* font-size: large;
-        font-weight: bold; */
-        color: red;
+        font-weight: bold;
       `}
     >
       <label class="form-check-label">{question}</label>

@@ -13,16 +13,10 @@ export default function HealthSafety() {
             <h3>Health and Safety Essential</h3>
           </div>
           <p>
-            Please study the notes carefully and raise any questions that you
-            have with your manager.
-            <br />
-            <br />
-            <strong>
-              <em>
-                When you have read, signed and dated the confirmation slip at
-                the end, return it to your manager for their records.
-              </em>
-            </strong>
+            <b>
+              Please study the notes carefully and raise any questions that you
+              have with your manager.
+            </b>
           </p>
           <form>
             <div className="row col-sm-12">
@@ -33,6 +27,8 @@ export default function HealthSafety() {
                 and make a note of it here:
               </p>
               <input type="text" className="form-control" />
+              <br />
+              <br />
               <p>This document which contains:</p>
               <ol type="a">
                 <li>A signed Statement of Policy.</li>

@@ -1,16 +1,11 @@
 /**@jsx jsx */
-import {jsx, css} from '@emotion/core';
+import {jsx} from '@emotion/core';
 import {Link} from '@reach/router';
-import {CenteredButton} from '../components/lib';
+import {CenteredButton, DivWithScroll} from '../components/lib';
 
 export default function Riddor() {
   return (
-    <div
-      className="col-sm-12 h-100"
-      css={css`
-        overflow-y: scroll;
-      `}
-    >
+    <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row">
           <div className="col-sm-9 text-center">
@@ -471,6 +466,6 @@ export default function Riddor() {
           <CenteredButton type="submit" value="submit" />
         </Link>
       </div>
-    </div>
+    </DivWithScroll>
   );
 }
