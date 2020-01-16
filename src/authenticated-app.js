@@ -21,7 +21,7 @@ function AuthenticatedApp() {
     <Router className="row h-100 w-100">
       <UnAuthenticatedApp path="/" />
       <EmployeeInfo path="info" />
-      <HealthQuestionnaires path="h-question" />
+      {pageNo === 2 && <HealthQuestionnaires path="h-question" />}
       <JobContractLetter path="jcl" />
       <HealthSafety path="h-safety" />
       <FoodSafety path="f-safety" />

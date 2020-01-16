@@ -22,16 +22,16 @@ const proofOfEligibilities = [
   {label: 'Both', value: 'both'},
 ];
 const EmployeeInfoSchema = yup.object().shape({
-  // firstName: yup.string().required(),
-  // lastName: yup.string().required(),
-  // address: yup.string().required(),
-  // postCode: yup.string().required(),
-  // dateOfBirth: yup.string().required(),
-  // gender: yup.string().required(),
-  // email: yup.string().required(),
-  // mobile: yup.string().required(),
-  // nationalInsuranceNumber: yup.string().required(),
-  // nationality: yup.string().required(),
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  address: yup.string().required(),
+  postCode: yup.string().required(),
+  dateOfBirth: yup.string().required(),
+  gender: yup.string().required(),
+  email: yup.string().required(),
+  mobile: yup.string().required(),
+  nationalInsuranceNumber: yup.string().required(),
+  nationality: yup.string().required(),
   // proofEligibilityDocumentNumber: yup.string().required(),
   // proofEligibility: yup.string().required(),
   // proofEligibilityExpiryDate: yup.string().required(),
@@ -62,7 +62,6 @@ function EmployeeInfo({navigate}) {
     data['summary'] = [...selectedCheckboxes];
     console.log(data);
     setPageNo(prevPage => prevPage + 1);
-
     navigate('/h-question');
   });
 
@@ -316,9 +315,7 @@ function EmployeeInfo({navigate}) {
                     <Input type="number" name="nextOfKinPhone" ref={register} />
                   </div>
                 </div>
-                {/* <Link to="/questionnaires"> */}
                 <CenteredButton type="submit" value="Continue" />
-                {/* </Link> */}
               </form>
             </div>
           </div>

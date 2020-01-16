@@ -13,9 +13,9 @@ function Question({question, options, name, correctAns}) {
             type="radio"
             name={name}
             value={value}
-            // ref={register({
-            //   validate: value => value === correctAns || 'Wrong Answer',
-            // })}
+            ref={register({
+              validate: value => value === correctAns || 'Wrong Answer',
+            })}
           />
           <label className="form-check-label">{value}</label>
         </div>
