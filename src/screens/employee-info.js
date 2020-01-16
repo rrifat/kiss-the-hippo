@@ -1,5 +1,6 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
+import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
 import {CenteredButton, ErrorText} from '../components/lib';
 import {Input, Select} from '../components/form-input';
@@ -74,7 +75,7 @@ function EmployeeInfo({navigate}) {
   };
 
   return (
-    <>
+    <React.Fragment>
       <LeftBox>
         <div className="sign-up-section">
           <div className="row">
@@ -332,7 +333,7 @@ function EmployeeInfo({navigate}) {
           />
         </div>
       </RightBox>
-    </>
+    </React.Fragment>
   );
 }
 export default EmployeeInfo;
