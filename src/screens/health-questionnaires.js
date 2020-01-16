@@ -4,13 +4,13 @@ import Question from '../components/question';
 import useForm, {FormContext} from 'react-hook-form';
 import {LeftBox, RightBox} from '../components/content-box';
 import pages from '../page-format.json';
-
+import {Link} from '@reach/router';
 const {
   subtitle = '',
   question_heading: questionHeading = '',
   questions = [],
   instruction = '',
-  page_title: pageTitle
+  page_title: pageTitle,
 } = pages[0];
 
 function HealthQuestionnaires() {
@@ -32,7 +32,7 @@ function HealthQuestionnaires() {
                 className="form-control"
                 id="historyOfIllness"
                 name="historyOfIllness"
-                ref={register({required: true})}
+                // ref={register({required: true})}
                 rows="3"
               ></textarea>
             </div>
@@ -53,9 +53,9 @@ function HealthQuestionnaires() {
                 )}
               </div>
             ))}
-            {/* <Link to="/jcl"> */}
-            <CenteredButton type="submit" value="Continue" />
-            {/* </Link> */}
+            <Link to="/jcl">
+              <CenteredButton type="submit" value="Continue" />
+            </Link>
           </form>
         </FormContext>
       </LeftBox>
