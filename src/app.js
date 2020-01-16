@@ -2,6 +2,7 @@ import React from 'react';
 import UnAuthenticatedApp from './unauthenticated-app';
 import BeanBackground from './components/bean-background';
 import AuthenticatedApp from './authenticated-app';
+import {PageProvider} from './context/page-context';
 
 const auth = {
   user: true,
@@ -9,7 +10,13 @@ const auth = {
 function App() {
   return (
     <BeanBackground>
-      {auth.user ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+      {auth.user ? (
+        <PageProvider>
+          <AuthenticatedApp />
+        </PageProvider>
+      ) : (
+        <UnAuthenticatedApp />
+      )}
     </BeanBackground>
   );
 }

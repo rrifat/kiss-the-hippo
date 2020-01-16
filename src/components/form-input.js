@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Input = React.forwardRef(({name, type, ...props}, ref) => (
+const Input = React.forwardRef(({label, name, type, ...props}, ref) => (
   <>
-    <label>{getLabel(name)}</label>
+    <label>{label || getLabel(name)}</label>
     <input
       type={type}
       name={name}
@@ -29,17 +29,19 @@ const Select = React.forwardRef(({name, options}, ref) => (
 const CheckBox = React.forwardRef(
   ({name, type, label, checked, handleChange}, ref) => (
     <>
-      <input
-        className="form-check-input"
-        type={type}
-        defaultChecked={checked}
-        ref={ref}
-        name={name}
-        onChange={() => handleChange(label)}
-      />
-      <label className="form-check-label">{label}</label>
+      <label className="form-check-label">
+        {label}
+        <input
+          className="form-check-input"
+          type={type}
+          defaultChecked={checked}
+          ref={ref}
+          name={name}
+          onChange={() => handleChange(label)}
+        />
+      </label>
     </>
-  ),
+  )
 );
 
 export {Input, Select, CheckBox};

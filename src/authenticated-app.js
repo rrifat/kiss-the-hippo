@@ -13,13 +13,15 @@ import Others from './screens/others';
 import Final from './screens/final';
 import Nutshell from './screens/nutshell';
 import HealthQuestionnaires from './screens/health-questionnaires';
+import {usePage} from './context/page-context';
 
 function AuthenticatedApp() {
+  const {pageNo} = usePage();
   return (
     <Router className="row h-100 w-100">
       <UnAuthenticatedApp path="/" />
       <EmployeeInfo path="info" />
-      <HealthQuestionnaires path="h-question" />
+      {pageNo === 2 && <HealthQuestionnaires path="h-question" />}
       <JobContractLetter path="jcl" />
       <HealthSafety path="h-safety" />
       <FoodSafety path="f-safety" />
@@ -30,7 +32,12 @@ function AuthenticatedApp() {
       <Others path="others" />
       <Final path="final" />
       <Nutshell path="nutshell" />
+      <NotFound default />
     </Router>
   );
 }
 export default AuthenticatedApp;
+
+function NotFound() {
+  return <h1>No Router Found</h1>;
+}
