@@ -269,6 +269,18 @@ input.password:focus + .icon {
   user-select: none;
 }
 
+/* Hide input type number's inner and outer spin button*/
+input[name='nextOfKinPhone']::-webkit-inner-spin-button,
+input[name='nextOfKinPhone']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[name='mobile']::-webkit-inner-spin-button,
+input[name='mobile']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 /* Hide the browser's default checkbox */
 .check input {
   position: absolute;

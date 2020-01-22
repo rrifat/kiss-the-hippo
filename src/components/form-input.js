@@ -4,9 +4,9 @@ const Input = React.forwardRef(({label, name, type, ...props}, ref) => (
   <>
     <label>{label || getLabel(name)}</label>
     <input
+      className="form-control"
       type={type}
       name={name}
-      className="form-control"
       ref={ref}
       {...props}
     />
