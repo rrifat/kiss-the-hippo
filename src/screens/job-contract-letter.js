@@ -2,7 +2,11 @@
 import {jsx, css} from '@emotion/core';
 import styled from '@emotion/styled';
 import {CenteredButton, DivWithScroll} from '../components/lib';
-import {Link} from '@reach/router';
+import {useForm} from 'react-hook-form';
+import {usePage, navigateToNextPage} from '../context/page-context';
+// import {useUser} from '../context/user-context';
+import * as itemClient from '../clients/item-client';
+import {useAuth} from '../context/auth-context';
 
 const Input = styled.input`
   border: none;
@@ -14,7 +18,27 @@ const Input = styled.input`
     box-shadow: none;
   }
 `;
-export default function JobContractLetter() {
+export default function JobContractLetter({navigate}) {
+  const {
+    page,
+    setPage,
+    userData: {user},
+  } = useAuth();
+
+  const {handleSubmit, register} = useForm();
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    itemClient
+      .create({user, page, data})
+      .then(({data: response}) => {
+        const {data} = response;
+        if (data && data.nextPageNo) {
+          setPage(data.nextPageNo);
+          navigate('/h-safety');
+        }
+      })
+      .catch(err => console.log(err.response));
+  };
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -39,16 +63,18 @@ export default function JobContractLetter() {
         </div>
         <br />
         <div className="row col-sm-12">
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group row no-gutters">
               <label className="col-auto col-form-label">
                 Employs&nbsp;&nbsp;
               </label>
               <div className="col-auto">
                 <Input
+                  name="username"
                   type="text"
                   className="form-control"
                   placeholder="name"
+                  ref={register({required: true})}
                 />
               </div>
             </div>
@@ -57,7 +83,12 @@ export default function JobContractLetter() {
                 Your employment began on&nbsp;&nbsp;
               </label>
               <div>
-                <Input type="date" className="form-control" />
+                <Input
+                  type="date"
+                  className="form-control"
+                  name="joiningDate"
+                  ref={register({required: true})}
+                />
               </div>
               <label className="col-form-label">
                 No previous employment counts as part of your period of
@@ -80,7 +111,12 @@ export default function JobContractLetter() {
                 You are employed as a&nbsp;&nbsp;
               </label>
               <div>
-                <Input type="text" className="form-control" />
+                <Input
+                  type="text"
+                  className="form-control"
+                  name="jobTitle"
+                  ref={register({required: true})}
+                />
               </div>
               <label className="col-form-label">
                 and your duties will be as advised by your Manager.
@@ -113,7 +149,12 @@ export default function JobContractLetter() {
                 Your normal hours of work are normally&nbsp;&nbsp;
               </label>
               <div className="col-1">
-                <Input type="number" className="form-control" />
+                <Input
+                  type="number"
+                  className="form-control"
+                  name="workingHours"
+                  ref={register({required: true})}
+                />
               </div>
               <label className="col-form-label">
                 per week, Monday to Sunday with agreed minutes of paid/ unpaid
@@ -123,7 +164,12 @@ export default function JobContractLetter() {
                 You will usually be expected to work&nbsp;&nbsp;&nbsp;
               </label>
               <div className="col-1">
-                <Input type="number" className="form-control" />
+                <Input
+                  type="number"
+                  className="form-control"
+                  name="expectedWorkingDays"
+                  ref={register({required: true})}
+                />
               </div>
               <label className="col-form-label">
                 days from seven days. Actual days, start/finish times will be
@@ -149,7 +195,12 @@ export default function JobContractLetter() {
                 >
                   £
                 </span>
-                <Input type="number" className="form-control" />
+                <Input
+                  type="number"
+                  className="form-control"
+                  name="currentSalary"
+                  ref={register({required: true})}
+                />
               </div>
               <label className="col-form-label">
                 per hour/ annum payable monthly by BACS monthly in arrears as
@@ -208,25 +259,27 @@ export default function JobContractLetter() {
               to work on any of these days you will be given an alternative day
               of leave in lieu. The date when a day off in lieu is to be taken
               is to be mutually agreed with us.
-              <div className="row mt-3">
-                <div className="col-sm-6">
-                  <ul>
-                    <li>New Year's Day</li>
-                    <li>The last Monday in May</li>
-                    <li>Good Friday</li>
-                    <li>The last Monday in August</li>
-                  </ul>
-                </div>
-                <div className="col-sm-6">
-                  <ul>
-                    <li>Easter Monday</li>
-                    <li>Christmas Day</li>
-                    <li>The first Monday in May</li>
-                    <li>Boxing Day</li>
-                  </ul>
-                </div>
+            </p>
+            <div className="row mt-3">
+              <div className="col-sm-6">
+                <ul>
+                  <li>New Year's Day</li>
+                  <li>The last Monday in May</li>
+                  <li>Good Friday</li>
+                  <li>The last Monday in August</li>
+                </ul>
               </div>
-              <br />
+              <div className="col-sm-6">
+                <ul>
+                  <li>Easter Monday</li>
+                  <li>Christmas Day</li>
+                  <li>The first Monday in May</li>
+                  <li>Boxing Day</li>
+                </ul>
+              </div>
+            </div>
+            <br />
+            <p>
               In the event of you working on any of the above public/bank
               holidays, you will be paid at single time for the hours worked. In
               the event of termination of employment holiday entitlement will be
@@ -628,9 +681,9 @@ export default function JobContractLetter() {
               </p>
             </div>
             <ConfirmAcknowledgement />
-            <Link to="/h-safety">
-              <CenteredButton type="submit" value="submit" />
-            </Link>
+            {/* <Link to="/h-safety"> */}
+            <CenteredButton type="submit" value="submit" />
+            {/* </Link> */}
           </form>
         </div>
       </div>

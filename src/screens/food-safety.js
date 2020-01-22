@@ -1,9 +1,33 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-import {CenteredButton, DivWithScroll} from '../components/lib';
-import {Link} from '@reach/router';
+import React from 'react';
+import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
+import {useForm, ErrorMessage} from 'react-hook-form';
+import {usePage, navigateToNextPage} from '../context/page-context';
+// import {useUser} from '../context/user-context';
+import * as itemClient from '../clients/item-client';
+import {useAuth} from '../context/auth-context';
 
-export default function FoodSafety() {
+export default function FoodSafety({navigate}) {
+  const {
+    page,
+    setPage,
+    userData: {user},
+  } = useAuth();
+  const {handleSubmit, register, errors} = useForm();
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    itemClient
+      .create({user, page, data})
+      .then(({data: response}) => {
+        const {data} = response;
+        if (data && data.nextPageNo) {
+          setPage(data.nextPageNo);
+          navigate('/riddor');
+        }
+      })
+      .catch(err => console.log(err.response));
+  };
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -28,7 +52,7 @@ export default function FoodSafety() {
               their records.
             </p>
           </div>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div name="policy" className="mt-2">
               <h5 className="font-weight-bold">Our Food Hygiene Policy</h5>
               <p>
@@ -36,7 +60,12 @@ export default function FoodSafety() {
                 read at any time. Please ask your manager where it is kept and
                 make a note of it here:
               </p>
-              <input type="text" className="form-control" />
+              <input
+                name="fSafety1"
+                ref={register({required: true})}
+                type="text"
+                className="form-control"
+              />
               <br />
               <p>It is a document which contains:</p>
               <ol type="a">
@@ -51,7 +80,12 @@ export default function FoodSafety() {
                 </li>
               </ol>
               <p>The signed Statement of Policy is displayed here:</p>
-              <input type="text" className="form-control" />
+              <input
+                name="fSafety2"
+                ref={register({required: true})}
+                type="text"
+                className="form-control"
+              />
             </div>
             <div name="bacteria" className="mt-5">
               <h5 className="font-weight-bold">Bacteria</h5>
@@ -99,8 +133,18 @@ export default function FoodSafety() {
                     of bacteria in a short period of time
                   </p>
                   <MultipleChoices
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="There are 3 types of bacteria"
+                    name="fSafety3"
+                    ref={register({
+                      validate: value =>
+                        value === 'True' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="fSafety3"
+                    as={<ErrorText />}
                   />
                 </div>
               </div>
@@ -151,9 +195,19 @@ export default function FoodSafety() {
                   shallow, metal trays, fans or cold water.
                 </p>
                 <MultipleChoices
-                  options={{5: '5', 4: '4'}}
+                  options={[5, 4]}
                   question="How many requirements are needed to be met for bacterial
-                    growth:"
+                  growth:"
+                  name="fSafety4"
+                  ref={register({
+                    validate: value =>
+                      value === '4' || 'Your answers is not correct!',
+                  })}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name="fSafety4"
+                  as={<ErrorText />}
                 />
               </div>
             </div>
@@ -245,8 +299,18 @@ export default function FoodSafety() {
                 </li>
               </ol>
               <MultipleChoices
-                options={{0: 'False', 1: 'True'}}
+                options={['False', 'True']}
                 question="There are three main types contamination."
+                name="fSafety5"
+                ref={register({
+                  validate: value =>
+                    value === 'True' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="fSafety5"
+                as={<ErrorText />}
               />
               <div className="my-3">
                 <img
@@ -286,8 +350,18 @@ export default function FoodSafety() {
                   symptom-free for 48 hours. Your Manager will advise you.
                 </p>
                 <MultipleChoices
-                  options={{0: 'False', 1: 'True'}}
+                  options={['False', 'True']}
                   question="If you have diarrhoea and/or vomiting you must not handle food and can only resume your usual duties when you have been symptom-free for 48 hours"
+                  name="fSafety6"
+                  ref={register({
+                    validate: value =>
+                      value === 'True' || 'Your answers is not correct!',
+                  })}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name="fSafety6"
+                  as={<ErrorText />}
                 />
               </div>
             </div>
@@ -417,8 +491,18 @@ export default function FoodSafety() {
                   </li>
                 </ol>
                 <MultipleChoices
-                  options={{0: 'False', 1: 'True'}}
+                  options={['False', 'True']}
                   question="Handwashing us only necessary when you dirt is visible in hand."
+                  name="fSafety7"
+                  ref={register({
+                    validate: value =>
+                      value === 'False' || 'Your answers is not correct!',
+                  })}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name="fSafety7"
+                  as={<ErrorText />}
                 />
                 <div className="my-3">
                   <h6 className="font-weight-bold">
@@ -453,8 +537,18 @@ export default function FoodSafety() {
                     you.
                   </p>
                   <MultipleChoices
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="As a food handler, it can be extremely dangerous for you, your colleagues and your customers if you feel, or recently have been, ill."
+                    name="fSafety8"
+                    ref={register({
+                      validate: value =>
+                        value === 'True' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="fSafety8"
+                    as={<ErrorText />}
                   />
                 </div>
               </div>
@@ -499,8 +593,18 @@ export default function FoodSafety() {
                 probe wipes or a sanitizer.
               </p>
               <MultipleChoices
-                options={{0: 'False', 1: 'True'}}
+                options={['False', 'True']}
                 question="You may be asked to assist in the monitoring and recording of CCPs."
+                name="fSafety9"
+                ref={register({
+                  validate: value =>
+                    value === 'True' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="fSafety9"
+                as={<ErrorText />}
               />
             </div>
             <div name="cleaning" className="mt-5">
@@ -544,41 +648,54 @@ export default function FoodSafety() {
                 cleaned.
               </p>
               <MultipleChoices
-                options={{0: 'False', 1: 'True'}}
+                options={['False', 'True']}
                 question="Equipment which has been used for raw food must never be used for RTE food unless it has been thoroughly cleaned and disinfected."
+                name="fSafety10"
+                ref={register({
+                  validate: value =>
+                    value === 'True' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="fSafety10"
+                as={<ErrorText />}
               />
             </div>
-            <Link to="/riddor">
-              <CenteredButton type="submit" value="submit" />
-            </Link>
+            {/* <Link to="/riddor"> */}
+            <CenteredButton type="submit" value="submit" />
+            {/* </Link> */}
           </form>
         </div>
       </div>
     </DivWithScroll>
   );
 }
-function MultipleChoices({options, question}) {
-  return (
-    <div
-      class="form-group"
-      css={css`
-        font-size: large;
-        font-weight: bold;
-      `}
-    >
-      <label class="form-check-label">{question}</label>
-      &nbsp; &nbsp;
-      {Object.entries(options).map(([val, label], index) => (
-        <div class="form-check form-check-inline" key={index}>
-          <input
-            class="form-check-input"
-            type="radio"
-            name="contamination"
-            value={val}
-          />
-          <label class="form-check-label">{label}</label>
-        </div>
-      ))}
-    </div>
-  );
-}
+const MultipleChoices = React.forwardRef(
+  ({options, question, name, correctAns}, ref) => {
+    return (
+      <div
+        className="form-group"
+        css={css`
+          font-size: large;
+          font-weight: bold;
+        `}
+      >
+        <label className="form-check-label">{question}</label>
+        &nbsp; &nbsp;
+        {options.map((label, index) => (
+          <div className="form-check form-check-inline" key={index}>
+            <input
+              ref={ref}
+              className="form-check-input"
+              type="radio"
+              name={name}
+              value={label}
+            />
+            <label className="form-check-label">{label}</label>
+          </div>
+        ))}
+      </div>
+    );
+  }
+);

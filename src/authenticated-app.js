@@ -1,7 +1,6 @@
 import React from 'react';
-import {Router} from '@reach/router';
+import {Router, Redirect} from '@reach/router';
 import EmployeeInfo from './screens/employee-info';
-import UnAuthenticatedApp from './unauthenticated-app';
 import JobContractLetter from './screens/job-contract-letter';
 import HealthSafety from './screens/health-safety';
 import FoodSafety from './screens/food-safety';
@@ -13,25 +12,34 @@ import Others from './screens/others';
 import Final from './screens/final';
 import Nutshell from './screens/nutshell';
 import HealthQuestionnaires from './screens/health-questionnaires';
-import {usePage} from './context/page-context';
+// import {usePage} from './context/page-context';
+import {useAuth} from './context/auth-context';
+
+const routes = [
+  <EmployeeInfo path="info" />,
+  <HealthQuestionnaires path="h-question" />,
+  <JobContractLetter path="jcl" />,
+  <HealthSafety path="h-safety" />,
+  <FoodSafety path="f-safety" />,
+  <Riddor path="riddor" />,
+  <Ladder path="ladder" />,
+  <UniformPolicy path="uniform" />,
+  <EmployeeDiscount path="employee-discount" />,
+  <Others path="others" />,
+  <Nutshell path="nutshell" />,
+  <Final path="final" />,
+];
+
+function RedirectHome() {
+  return <Redirect to="info" noThrow />;
+}
 
 function AuthenticatedApp() {
-  const {pageNo} = usePage();
+  const {page} = useAuth();
   return (
     <Router className="row h-100 w-100">
-      <UnAuthenticatedApp path="/" />
-      <EmployeeInfo path="info" />
-      {pageNo === 2 && <HealthQuestionnaires path="h-question" />}
-      <JobContractLetter path="jcl" />
-      <HealthSafety path="h-safety" />
-      <FoodSafety path="f-safety" />
-      <Riddor path="riddor" />
-      <Ladder path="ladder" />
-      <UniformPolicy path="uniform" />
-      <EmployeeDiscount path="employee-discount" />
-      <Others path="others" />
-      <Final path="final" />
-      <Nutshell path="nutshell" />
+      <RedirectHome path="/" />
+      {routes[page - 1]}
       <NotFound default />
     </Router>
   );
@@ -39,5 +47,20 @@ function AuthenticatedApp() {
 export default AuthenticatedApp;
 
 function NotFound() {
-  return <h1>No Router Found</h1>;
+  return (
+    <div className="col-sm-12">
+      <div className="container">
+        <div className="row col-9 offset-3 py-5">
+          <h1>
+            <b>Page Not Found</b>
+          </h1>
+          <div className="row col-12">
+            <p className="text-muted">
+              We couldn't find what you were looking for.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

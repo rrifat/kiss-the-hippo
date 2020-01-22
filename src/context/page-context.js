@@ -1,10 +1,30 @@
 import React from 'react';
+import {navigate} from '@reach/router';
 
 const PageContext = React.createContext();
-
+const routes = [
+  '/',
+  '/info',
+  '/h-question',
+  '/jcl',
+  '/h-safety',
+  '/f-safety',
+  '/riddor',
+  '/ladder',
+  '/unifor',
+];
 function PageProvider(props) {
-  const [pageNo, setPageNo] = React.useState(1);
-  return <PageContext.Provider value={{pageNo, setPageNo}} {...props} />;
+  const [page, setPage] = React.useState(1);
+
+  return (
+    <PageContext.Provider
+      value={{page, setPage, navigateToNextPage}}
+      {...props}
+    />
+  );
+}
+function navigateToNextPage(page) {
+  navigate(routes[page]);
 }
 
 function usePage() {
@@ -14,4 +34,4 @@ function usePage() {
   }
   return context;
 }
-export {PageProvider, usePage};
+export {PageProvider, usePage, navigateToNextPage};

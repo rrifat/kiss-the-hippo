@@ -1,9 +1,10 @@
 import client from './api-client';
-const localStorageKey = '__isp_dash_token__';
+import jwtDecode from 'jwt-decode';
+const localStorageKey = '__kiss_the_hippo__';
 
-function handleUserResponse({data}) {
-  window.localStorage.setItem(localStorageKey, data.access_token);
-  return data;
+function handleUserResponse({data: response}) {
+  window.localStorage.setItem(localStorageKey, response.data.access_token);
+  return response;
 }
 
 function getUser() {
@@ -11,15 +12,18 @@ function getUser() {
   if (!token) {
     return Promise.resolve(null);
   }
+  const {identity} = jwtDecode(token);
 
-  return Promise.resolve({access_token: token}).catch(error => {
+  return Promise.resolve({user: identity.userid}).catch(error => {
     logout();
     return Promise.reject(error);
   });
 }
 
-function login({username, password}) {
-  return client('auth/', {body: {username, password}}).then(handleUserResponse);
+function login({userid, password}) {
+  return client('auth/login', {body: {userid, password}}).then(
+    handleUserResponse
+  );
 }
 
 function logout() {

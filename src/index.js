@@ -2,5 +2,11 @@ import './bootstrap';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app';
+import AppProviders from './context';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(
+  <AppProviders>
+    <App />
+  </AppProviders>,
+  document.getElementById('root')
+);

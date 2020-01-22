@@ -1,13 +1,37 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-import {CenteredButton, DivWithScroll} from '../components/lib';
-import {Link} from '@reach/router';
+import React from 'react';
+import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
+import {useForm, ErrorMessage} from 'react-hook-form';
+import {usePage, navigateToNextPage} from '../context/page-context';
+// import {useUser} from '../context/user-context';
+import * as itemClient from '../clients/item-client';
+import {useAuth} from '../context/auth-context';
 
-export default function Nutshell() {
+export default function Nutshell({navigate}) {
+  const {
+    page,
+    setPage,
+    userData: {user},
+  } = useAuth();
+  const {handleSubmit, register, errors} = useForm();
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    itemClient
+      .create({user, page, data})
+      .then(({data: response}) => {
+        const {data} = response;
+        if (data && data.nextPageNo) {
+          setPage(data.nextPageNo);
+          navigate('/final');
+        }
+      })
+      .catch(err => console.log(err.response));
+  };
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="row col-sm-9 offset-sm-1">
             <div className="pt-5 pb-3">
               <h5 className="font-weight-bold">OUR COFFEE AND EQUIPMENTS:</h5>
@@ -20,13 +44,22 @@ export default function Nutshell() {
                 flavour identit y and the taste of its terroir.
               </p>
               <MultipleChoices
-                name="roasting-machine"
+                name="roastingMachine"
                 options={{
                   gisenw140: 'gisenw140',
                   loring: 'Loring',
                   genio6: 'Genio 6',
                 }}
                 question="What is the  name of our Roasting Machine:"
+                ref={register({
+                  validate: value =>
+                    value === 'loring' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="roastingMachine"
+                as={<ErrorText />}
               />
             </div>
             <div>
@@ -47,7 +80,12 @@ export default function Nutshell() {
                   zero: 'Zero waste',
                 }}
                 question="Which one is the key feature of loring:"
+                ref={register({
+                  validate: value =>
+                    value === 'environment' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="loring" as={<ErrorText />} />
             </div>
             <div className="py-3">
               <h6 className="font-weight-bold">Kees van der Westen</h6>
@@ -58,14 +96,19 @@ export default function Nutshell() {
                 that marries striking design and engineering excellence.
               </p>
               <MultipleChoices
-                name="loring"
+                name="kees"
                 options={{
                   kees: 'Kees van der Westen',
                   mastrena: 'mastrena',
                   mazrocco: 'La mazrocco',
                 }}
                 question="Which one is our coffee machine:"
+                ref={register({
+                  validate: value =>
+                    value === 'kees' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="kees" as={<ErrorText />} />
             </div>
             <div>
               <h6 className="font-weight-bold">Mythos One Clima Pro</h6>
@@ -93,6 +136,15 @@ export default function Nutshell() {
                   mahlkonigEK43s: 'MahlkonigEK43s',
                 }}
                 question="Which one is not our coffee grinder:"
+                ref={register({
+                  validate: value =>
+                    value === 'mythos2' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="mahlkonig"
+                as={<ErrorText />}
               />
             </div>
             <div className="pb-3">
@@ -108,9 +160,18 @@ export default function Nutshell() {
                 options={{
                   kees: 'Kees van der Westen',
                   mastrena: 'mastrena',
-                  PugPress: 'PugPress',
+                  pugpress: 'PugPress',
                 }}
                 question="Which one is our tamping machine"
+                ref={register({
+                  validate: value =>
+                    value === 'pugpress' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="puqpress"
+                as={<ErrorText />}
               />
             </div>
             <div className="pb-3">
@@ -141,7 +202,12 @@ export default function Nutshell() {
                   c: 'mastrena',
                 }}
                 question="Which one is not our appliance"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="orion" as={<ErrorText />} />
             </div>
             <div className="pb-3">
               <h6 className="font-weight-bold">Roasting</h6>
@@ -160,6 +226,15 @@ export default function Nutshell() {
                   c: 'dark roast',
                 }}
                 question="Which one from the below is our coffee roasting-?"
+                ref={register({
+                  validate: value =>
+                    value === 'b' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="roasting"
+                as={<ErrorText />}
               />
             </div>
             <div className="pb-3">
@@ -183,6 +258,15 @@ export default function Nutshell() {
                   c: '80%',
                 }}
                 question="What percentage of coffee we are committed to buy from certified producers-"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="organic1"
+                as={<ErrorText />}
               />
               <MultipleChoices
                 name="organic2"
@@ -192,6 +276,15 @@ export default function Nutshell() {
                   c: 'Donna Blend',
                 }}
                 question="What is the name of our houseblend"
+                ref={register({
+                  validate: value =>
+                    value === 'b' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="organic2"
+                as={<ErrorText />}
               />
             </div>
             <div className="pb-3">
@@ -220,6 +313,15 @@ export default function Nutshell() {
                   c: '6th',
                 }}
                 question="Where’s our training campus official  standing in UK-"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="training"
+                as={<ErrorText />}
               />
             </div>
             <div className="pb-3">
@@ -251,7 +353,12 @@ export default function Nutshell() {
                   c: '13.6ton',
                 }}
                 question="How much we save currently in co2 omission"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="sus1" as={<ErrorText />} />
               <MultipleChoices
                 name="sus2"
                 options={{
@@ -260,7 +367,12 @@ export default function Nutshell() {
                   c: 'Bio bean',
                 }}
                 question="Which company s turning our coffee ground waste to fuel-"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="sus2" as={<ErrorText />} />
             </div>
             <div className="pb-3">
               <h5 className="font-weight-bold">Our Food:</h5>
@@ -320,13 +432,27 @@ export default function Nutshell() {
                     name="ham"
                     options={{0: 'False', 1: 'True'}}
                     question="Our Ham is free range"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
                   />
+                  <ErrorMessage errors={errors} name="ham" as={<ErrorText />} />
                 </li>
                 <li>
                   <MultipleChoices
                     name="chicken"
                     options={{0: 'False', 1: 'True'}}
                     question="Our chicken is supplied by Haye Farm"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="chicken"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
@@ -334,6 +460,15 @@ export default function Nutshell() {
                     name="bacon"
                     options={{0: 'False', 1: 'True'}}
                     question="Our bacon is supplied by Dingely Dell"
+                    ref={register({
+                      validate: value =>
+                        value === '0' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="bacon"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
@@ -341,6 +476,15 @@ export default function Nutshell() {
                     name="salmon1"
                     options={{0: 'False', 1: 'True'}}
                     question="Our salmon is organic"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="salmon1"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
@@ -348,6 +492,15 @@ export default function Nutshell() {
                     name="salmon2"
                     options={{0: 'False', 1: 'True'}}
                     question="Our salmons are Breckland Browns"
+                    ref={register({
+                      validate: value =>
+                        value === '0' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="salmon2"
+                    as={<ErrorText />}
                   />
                 </li>
               </ol>
@@ -394,37 +547,82 @@ export default function Nutshell() {
               >
                 <li>
                   <MultipleChoices
-                    name="ham"
+                    name="yoghurt"
                     options={{0: 'False', 1: 'True'}}
                     question="Our yoghurt is called Kolios"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="yoghurt"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
                   <MultipleChoices
-                    name="chicken"
+                    name="butter"
                     options={{0: 'False', 1: 'True'}}
                     question="Our butter is french"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="butter"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
                   <MultipleChoices
-                    name="bacon"
+                    name="crossaints"
                     options={{0: 'False', 1: 'True'}}
                     question="Our crossaints are supplied by external supplier"
+                    ref={register({
+                      validate: value =>
+                        value === '0' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="crossaints"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
                   <MultipleChoices
-                    name="salmon1"
+                    name="chedder"
                     options={{0: 'False', 1: 'True'}}
                     question="Our chedder is organic"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="chedder"
+                    as={<ErrorText />}
                   />
                 </li>
                 <li>
                   <MultipleChoices
-                    name="salmon2"
+                    name="cakes"
                     options={{0: 'False', 1: 'True'}}
                     question="Our cakes are baked in house"
+                    ref={register({
+                      validate: value =>
+                        value === '1' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="cakes"
+                    as={<ErrorText />}
                   />
                 </li>
               </ol>
@@ -464,47 +662,62 @@ export default function Nutshell() {
             </div>
             <div className="pb-3">
               <MultipleChoices
-                name="glutten-free"
+                name="gluttenFree"
                 options={{a: 'chia pot', b: 'brownie', c: 'porridge'}}
                 question="Which one is not Gluten free?"
+                ref={register({
+                  validate: value =>
+                    value === 'a' || 'Your answers is not correct!',
+                })}
+              />
+              <ErrorMessage
+                errors={errors}
+                name="gluttenFree"
+                as={<ErrorText />}
               />
               <MultipleChoices
                 name="vegan"
                 options={{a: 'Coconut cookies ', b: 'brownie', c: 'porridge'}}
                 question="Which one is vegan?"
+                ref={register({
+                  validate: value =>
+                    value === 'c' || 'Your answers is not correct!',
+                })}
               />
+              <ErrorMessage errors={errors} name="vegan" as={<ErrorText />} />
             </div>
           </div>
-          <Link to="/final">
-            <CenteredButton value="submit" type="submit" />
-          </Link>
+          <CenteredButton value="submit" type="submit" />
         </form>
       </div>
     </DivWithScroll>
   );
 }
 
-function MultipleChoices({name, options = {}, question}) {
-  return (
-    <div
-      class="form-group"
-      css={css`
-        font-weight: bold;
-      `}
-    >
-      <label class="form-check-label">{question}</label>
-      &nbsp; &nbsp;
-      {Object.entries(options).map(([val, label], index) => (
-        <div class="form-check form-check-inline" key={index}>
-          <input
-            class="form-check-input"
-            type="radio"
-            name={name}
-            value={val}
-          />
-          <label class="form-check-label">{label}</label>
-        </div>
-      ))}
-    </div>
-  );
-}
+const MultipleChoices = React.forwardRef(
+  ({name, options = {}, question}, ref) => {
+    return (
+      <div
+        className="form-group"
+        css={css`
+          font-weight: bold;
+        `}
+      >
+        <label className="form-check-label">{question}</label>
+        &nbsp; &nbsp;
+        {Object.entries(options).map(([val, label], index) => (
+          <div className="form-check form-check-inline" key={index}>
+            <input
+              className="form-check-input"
+              type="radio"
+              name={name}
+              value={val}
+              ref={ref}
+            />
+            <label className="form-check-label">{label}</label>
+          </div>
+        ))}
+      </div>
+    );
+  }
+);

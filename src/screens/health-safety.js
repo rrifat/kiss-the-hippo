@@ -2,9 +2,33 @@
 import {jsx, css} from '@emotion/core';
 import SafetyTwo from './safety-two';
 import {CenteredButton, DivWithScroll} from '../components/lib';
-import {Link} from '@reach/router';
+import {useForm} from 'react-hook-form';
+import {usePage, navigateToNextPage} from '../context/page-context';
+// import {useUser} from '../context/user-context';
+import * as itemClient from '../clients/item-client';
+import {useAuth} from '../context/auth-context';
 
-export default function HealthSafety() {
+export default function HealthSafety({navigate}) {
+  const {
+    page,
+    setPage,
+    userData: {user},
+  } = useAuth();
+
+  const {handleSubmit, register} = useForm();
+  const onSubmit = (data, e) => {
+    e.preventDefault();
+    itemClient
+      .create({user, page, data})
+      .then(({data: response}) => {
+        const {data} = response;
+        if (data && data.nextPageNo) {
+          setPage(data.nextPageNo);
+          navigate('/f-question');
+        }
+      })
+      .catch(err => console.log(err.response));
+  };
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -18,7 +42,7 @@ export default function HealthSafety() {
               have with your manager.
             </b>
           </p>
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <div className="row col-sm-12">
               <h5 className="font-weight-bold">Our health and safety policy</h5>
               <p>
@@ -26,7 +50,12 @@ export default function HealthSafety() {
                 to read at any time. Please ask your manager where it is kept
                 and make a note of it here:
               </p>
-              <input type="text" className="form-control" />
+              <input
+                name="hSafety1"
+                ref={register({required: true})}
+                type="text"
+                className="form-control"
+              />
               <br />
               <br />
               <p>This document which contains:</p>
@@ -47,7 +76,12 @@ export default function HealthSafety() {
                 manager to assist you and write the location in the box
                 provided):
               </p>
-              <input type="text" className="form-control" />
+              <input
+                type="text"
+                className="form-control"
+                name="hSafety2"
+                ref={register({required: true})}
+              />
               <h6 className="font-weight-bold mt-2">Your responsibilities</h6>
               <div className="row col-sm-12">
                 <p>You are responsible for:</p>
@@ -89,7 +123,12 @@ export default function HealthSafety() {
                     Know‘ poster. It is located here (Ask your manager to assist
                     you and write the location in the box provided):
                   </p>
-                  <input type="text" className="form-control" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="hSafety3"
+                    ref={register({required: true})}
+                  />
                 </div>
                 <div className="col-sm-3">
                   <img
@@ -166,7 +205,12 @@ export default function HealthSafety() {
                   Get help – either call the Emergency First Aider at Work/First
                   Aider at Work or ensure someone does; see the notice board and
                   make a note of the contact details here:
-                  <input type="text" className="form-control m-2" />
+                  <input
+                    type="text"
+                    className="form-control m-2"
+                    name="hSafety4"
+                    ref={register({required: true})}
+                  />
                 </li>
                 <li>Reassure the patient that help is on the way.</li>
                 <li>
@@ -179,13 +223,23 @@ export default function HealthSafety() {
                   <h6 className="font-weight-bold">
                     Locations of our first aid boxes:
                   </h6>
-                  <input type="text" className="form-control" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="hSafety5"
+                    ref={register({required: true})}
+                  />
                   <br />
                   <br />
                   <h6 className="font-weight-bold">
                     The list of our qualified first aiders is located here:
                   </h6>
-                  <input type="text" className="form-control" />
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="hSafety6"
+                    ref={register({required: true})}
+                  />
                 </div>
                 <div className="col-sm-3 offset-sm-2">
                   <img
@@ -264,7 +318,12 @@ export default function HealthSafety() {
                       Where is your nearest fire alarm point?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety7"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -272,7 +331,12 @@ export default function HealthSafety() {
                       Where is your nearest fire extinguisher?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety8"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -280,7 +344,12 @@ export default function HealthSafety() {
                       What type of extinguisher is it?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety9"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -288,7 +357,12 @@ export default function HealthSafety() {
                       What type of fire can it be used on?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety10"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -297,7 +371,12 @@ export default function HealthSafety() {
                       fryer fire?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety11"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -306,7 +385,12 @@ export default function HealthSafety() {
                       activation point (if applicable)?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety12"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -314,7 +398,12 @@ export default function HealthSafety() {
                       In the kitchen, where is the gas shut-off point?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety13"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -322,7 +411,12 @@ export default function HealthSafety() {
                       Where is your nearest fire exit?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety14"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -330,7 +424,12 @@ export default function HealthSafety() {
                       Where is a second means of escape?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety15"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -338,7 +437,12 @@ export default function HealthSafety() {
                       Where is your assembly point?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety16"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -346,7 +450,12 @@ export default function HealthSafety() {
                       In the event of an evacuation, who should you report to
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety17"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                   <div className="form-group row">
@@ -354,7 +463,12 @@ export default function HealthSafety() {
                       Who should you report fire hazards to?
                     </label>
                     <div className="col-12">
-                      <input type="text" className="form-control" />
+                      <input
+                        type="text"
+                        className="form-control"
+                        name="hSafety18"
+                        ref={register({required: true})}
+                      />
                     </div>
                   </div>
                 </div>
@@ -478,9 +592,9 @@ export default function HealthSafety() {
               </div>
               <SafetyTwo />
             </div>
-            <Link to="/f-safety">
-              <CenteredButton type="submit" value="submit" />
-            </Link>
+            {/* <Link to="/f-safety"> */}
+            <CenteredButton type="submit" value="submit" />
+            {/* </Link> */}
           </form>
         </div>
       </div>

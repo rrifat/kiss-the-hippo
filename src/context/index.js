@@ -1,11 +1,12 @@
 import React from 'react';
-import { AuthProvider } from './auth-context';
-import { UserProvider } from './user-context';
+import {AuthProvider} from './auth-context';
+// import {UserProvider} from './user-context';
 
-function AppProviders({ children }) {
+function AppProviders({children}) {
   return (
     <AuthProvider>
-      <UserProvider>{children}</UserProvider>
+      {/* <UserProvider>{children}</UserProvider> */}
+      {children}
     </AuthProvider>
   );
 }

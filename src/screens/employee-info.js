@@ -4,9 +4,13 @@ import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
 import {CenteredButton, ErrorText} from '../components/lib';
 import {Input, Select} from '../components/form-input';
-import useForm from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import * as yup from 'yup';
-import {usePage} from '../context/page-context';
+import {usePage, navigateToNextPage} from '../context/page-context';
+import * as itemClient from '../clients/item-client';
+// import {useUser} from '../context/user-context';
+import {useAuth} from '../context/auth-context';
+
 const gender = [
   {label: 'Male', value: 'male'},
   {label: 'Female', value: 'female'},
@@ -52,7 +56,12 @@ const EmployeeInfoSchema = yup.object().shape({
 });
 
 function EmployeeInfo({navigate}) {
-  const {setPageNo} = usePage();
+  const {
+    page,
+    setPage,
+    userData: {user},
+  } = useAuth();
+
   let selectedCheckboxes = new Set();
   const {register, handleSubmit, errors} = useForm({
     validationSchema: EmployeeInfoSchema,
@@ -60,9 +69,16 @@ function EmployeeInfo({navigate}) {
   const onSubmit = handleSubmit((data, e) => {
     e.preventDefault();
     data['summary'] = [...selectedCheckboxes];
-    console.log(data);
-    setPageNo(prevPage => prevPage + 1);
-    navigate('/h-question');
+    itemClient
+      .create({user, page, data})
+      .then(({data: response}) => {
+        const {data} = response;
+        if (data && data.nextPageNo) {
+          setPage(data.nextPageNo);
+          navigate('/h-question');
+        }
+      })
+      .catch(err => console.log(err.response));
   });
 
   const handleChange = label => {
@@ -278,9 +294,8 @@ function EmployeeInfo({navigate}) {
                             className="form-check-input"
                             type="checkbox"
                             name="summary"
-                            defaultChecked={checkbox.checked}
                             ref={register}
-                            onChange={handleChange}
+                            onChange={() => handleChange(checkbox.label)}
                           />
                         </div>
                       </div>

@@ -2,8 +2,10 @@
 import {jsx} from '@emotion/core';
 import {Link} from '@reach/router';
 import {CenteredButton, DivWithScroll} from '../components/lib';
+import {useAuth} from '../context/auth-context';
 
-export default function EmployeeDiscount() {
+export default function EmployeeDiscount({navigate}) {
+  const {setPage} = useAuth();
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -99,9 +101,14 @@ export default function EmployeeDiscount() {
             <input type="date" className="form-control" />
           </div>
         </div>
-        <Link to="/others">
-          <CenteredButton type="submit" value="submit" />
-        </Link>
+        <CenteredButton
+          type="button"
+          value="continue"
+          onClick={() => {
+            setPage(page => page + 1);
+            navigate('/others');
+          }}
+        />
       </div>
     </DivWithScroll>
   );

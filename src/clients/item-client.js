@@ -39,8 +39,8 @@ function readAll(path) {
     .catch(err => console.log(err));
 }
 
-function create(path, data) {
-  return client(`${path}/`, { body: data }).catch(err => console.log(err));
+function create(data) {
+  return client('data', { body: data }).catch(err => console.log(err));
 }
 
 function update(path, data) {
