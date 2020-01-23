@@ -198,59 +198,8 @@
     
   },
   {
-    "ladderQ1": [
-      {
-        "value": "True",
-        "label": "Manufactures information"
-      },
-      {
-        "value": "False",
-        "label": "Ground should be firm and level"
-      },
-      {
-        "value": "False",
-        "label": "Maximum safe ground back slope"
-      },
-      {
-        "value": "False",
-        "label": "Floors should be clean, not slippery"
-      }
-    ],
-    "ladderQ2": [
-      {
-        "value": "True",
-        "label": "Up to 10 Kg"
-      },
-      {
-        "value": "False",
-        "label": "20 kg"
-      },
-      {
-        "value": "False",
-        "label": "No restriction"
-      },
-      {
-        "value": "False",
-        "label": "12kg"
-      }
-    ],
-    "ladderQ3": [
-      {
-        "value": "True",
-        "label": "At least 2"
-      },
-      {
-        "value": "False",
-        "label": "Minimum 4"
-      },
-      {
-        "value": "False",
-        "label": "No restriction"
-      },
-      {
-        "value": "False",
-        "label": "No minimum"
-      }
-    ]
+    "ladderQ1": ["Ground should be firm and level","Maximum safe ground back slope","Floors should be clean, not slippery", "Manufactures information"],
+    "ladderQ2": ["20 kg","No restriction","Up to 10 Kg","12kg"],
+    "ladderQ3": ["At least 2","Minimum 4","No restriction","No minimum"]
   }
 ]

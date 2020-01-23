@@ -45,15 +45,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="roastingMachine"
-                options={{
-                  gisenw140: 'gisenw140',
-                  loring: 'Loring',
-                  genio6: 'Genio 6',
-                }}
+                options={['gisenw140', 'Loring', 'Genio 6']}
                 question="What is the  name of our Roasting Machine:"
                 ref={register({
                   validate: value =>
-                    value === 'loring' || 'Your answers is not correct!',
+                    value === '1' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -74,15 +70,15 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="loring"
-                options={{
-                  environment: 'environment friendliness',
-                  cost: 'cost effective',
-                  zero: 'Zero waste',
-                }}
+                options={[
+                  'environment friendliness',
+                  'cost effective',
+                  'Zero waste',
+                ]}
                 question="Which one is the key feature of loring:"
                 ref={register({
                   validate: value =>
-                    value === 'environment' || 'Your answers is not correct!',
+                    value === '0' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="loring" as={<ErrorText />} />
@@ -97,15 +93,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="kees"
-                options={{
-                  kees: 'Kees van der Westen',
-                  mastrena: 'mastrena',
-                  mazrocco: 'La mazrocco',
-                }}
+                options={['Kees van der Westen', 'mastrena', 'La mazrocco']}
                 question="Which one is our coffee machine:"
                 ref={register({
                   validate: value =>
-                    value === 'kees' || 'Your answers is not correct!',
+                    value === '0' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="kees" as={<ErrorText />} />
@@ -130,15 +122,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="mahlkonig"
-                options={{
-                  mythos2: 'mythos 2',
-                  mythos1: 'mythos 1',
-                  mahlkonigEK43s: 'MahlkonigEK43s',
-                }}
+                options={['mythos 2', 'mythos 1', 'MahlkonigEK43s']}
                 question="Which one is not our coffee grinder:"
                 ref={register({
                   validate: value =>
-                    value === 'mythos2' || 'Your answers is not correct!',
+                    value === '0' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -157,15 +145,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="puqpress"
-                options={{
-                  kees: 'Kees van der Westen',
-                  mastrena: 'mastrena',
-                  pugpress: 'PugPress',
-                }}
+                options={['Kees van der Westen', 'mastrena', 'PugPress']}
                 question="Which one is our tamping machine"
                 ref={register({
                   validate: value =>
-                    value === 'pugpress' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -196,15 +180,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="orion"
-                options={{
-                  a: 'Acaia Orion bean dosers',
-                  b: 'marc mix',
-                  c: 'mastrena',
-                }}
+                options={['Acaia Orion bean dosers', 'marc mix', 'mastrena']}
                 question="Which one is not our appliance"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="orion" as={<ErrorText />} />
@@ -220,15 +200,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="roasting"
-                options={{
-                  a: 'Medium to dark',
-                  b: 'light to medium',
-                  c: 'dark roast',
-                }}
+                options={['Medium to dark', 'light to medium', 'dark roast']}
                 question="Which one from the below is our coffee roasting-?"
                 ref={register({
                   validate: value =>
-                    value === 'b' || 'Your answers is not correct!',
+                    value === '1' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -252,15 +228,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="organic1"
-                options={{
-                  a: '48%',
-                  b: '60%',
-                  c: '80%',
-                }}
+                options={['48%', '60%', '80%']}
                 question="What percentage of coffee we are committed to buy from certified producers-"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -270,15 +242,15 @@ export default function Nutshell({navigate}) {
               />
               <MultipleChoices
                 name="organic2"
-                options={{
-                  a: 'Organic Blend',
-                  b: 'George street blend',
-                  c: 'Donna Blend',
-                }}
+                options={[
+                  'Organic Blend',
+                  'George street blend',
+                  'Donna Blend',
+                ]}
                 question="What is the name of our houseblend"
                 ref={register({
                   validate: value =>
-                    value === 'b' || 'Your answers is not correct!',
+                    value === '1' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -307,15 +279,11 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="training"
-                options={{
-                  a: '2nd',
-                  b: '5th',
-                  c: '6th',
-                }}
+                options={['2nd', '5th', '6th']}
                 question="Where’s our training campus official  standing in UK-"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -347,29 +315,21 @@ export default function Nutshell({navigate}) {
               </p>
               <MultipleChoices
                 name="sus1"
-                options={{
-                  a: '16.3 ton',
-                  b: '61.3 ton',
-                  c: '13.6ton',
-                }}
+                options={['16.3 ton', '61.3 ton', '13.6ton']}
                 question="How much we save currently in co2 omission"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="sus1" as={<ErrorText />} />
               <MultipleChoices
                 name="sus2"
-                options={{
-                  a: 'first mile',
-                  b: 'biffa',
-                  c: 'Bio bean',
-                }}
+                options={['first mile', 'biffa', 'Bio bean']}
                 question="Which company s turning our coffee ground waste to fuel-"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="sus2" as={<ErrorText />} />
@@ -430,7 +390,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="ham"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our Ham is free range"
                     ref={register({
                       validate: value =>
@@ -442,7 +402,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="chicken"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our chicken is supplied by Haye Farm"
                     ref={register({
                       validate: value =>
@@ -458,7 +418,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="bacon"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our bacon is supplied by Dingely Dell"
                     ref={register({
                       validate: value =>
@@ -474,7 +434,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="salmon1"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our salmon is organic"
                     ref={register({
                       validate: value =>
@@ -490,7 +450,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="salmon2"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our salmons are Breckland Browns"
                     ref={register({
                       validate: value =>
@@ -548,7 +508,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="yoghurt"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our yoghurt is called Kolios"
                     ref={register({
                       validate: value =>
@@ -564,7 +524,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="butter"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our butter is french"
                     ref={register({
                       validate: value =>
@@ -580,7 +540,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="crossaints"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our crossaints are supplied by external supplier"
                     ref={register({
                       validate: value =>
@@ -596,7 +556,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="chedder"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our chedder is organic"
                     ref={register({
                       validate: value =>
@@ -612,7 +572,7 @@ export default function Nutshell({navigate}) {
                 <li>
                   <MultipleChoices
                     name="cakes"
-                    options={{0: 'False', 1: 'True'}}
+                    options={['False', 'True']}
                     question="Our cakes are baked in house"
                     ref={register({
                       validate: value =>
@@ -663,11 +623,11 @@ export default function Nutshell({navigate}) {
             <div className="pb-3">
               <MultipleChoices
                 name="gluttenFree"
-                options={{a: 'chia pot', b: 'brownie', c: 'porridge'}}
+                options={['chia pot', 'brownie', 'porridge']}
                 question="Which one is not Gluten free?"
                 ref={register({
                   validate: value =>
-                    value === 'a' || 'Your answers is not correct!',
+                    value === '0' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
@@ -677,11 +637,11 @@ export default function Nutshell({navigate}) {
               />
               <MultipleChoices
                 name="vegan"
-                options={{a: 'Coconut cookies ', b: 'brownie', c: 'porridge'}}
+                options={['Coconut cookies ', 'brownie', 'porridge']}
                 question="Which one is vegan?"
                 ref={register({
                   validate: value =>
-                    value === 'c' || 'Your answers is not correct!',
+                    value === '2' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage errors={errors} name="vegan" as={<ErrorText />} />
@@ -695,7 +655,7 @@ export default function Nutshell({navigate}) {
 }
 
 const MultipleChoices = React.forwardRef(
-  ({name, options = {}, question}, ref) => {
+  ({name, options = [], question}, ref) => {
     return (
       <div
         className="form-group"
@@ -705,16 +665,16 @@ const MultipleChoices = React.forwardRef(
       >
         <label className="form-check-label">{question}</label>
         &nbsp; &nbsp;
-        {Object.entries(options).map(([val, label], index) => (
+        {options.map((option, index) => (
           <div className="form-check form-check-inline" key={index}>
             <input
               className="form-check-input"
               type="radio"
               name={name}
-              value={val}
+              value={index}
               ref={ref}
             />
-            <label className="form-check-label">{label}</label>
+            <label className="form-check-label">{option}</label>
           </div>
         ))}
       </div>

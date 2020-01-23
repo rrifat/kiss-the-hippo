@@ -24,7 +24,7 @@ export default function HealthSafety({navigate}) {
         const {data} = response;
         if (data && data.nextPageNo) {
           setPage(data.nextPageNo);
-          navigate('/f-question');
+          navigate('/f-safety');
         }
       })
       .catch(err => console.log(err.response));

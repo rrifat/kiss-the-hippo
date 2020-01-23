@@ -84,13 +84,13 @@ export default function Ladder({navigate}) {
                       <input
                         type="radio"
                         name="ladderQ1"
-                        value={option.value}
+                        value={index}
                         ref={register({
                           validate: value =>
-                            value === 'True' || 'Your answers is not correct!',
+                            value === '3' || 'Your answers is not correct!',
                         })}
                       />
-                      <label>&nbsp;{option.label}</label>
+                      <label>&nbsp;{option}</label>
                     </li>
                   ))}
                   <ErrorMessage
@@ -130,13 +130,13 @@ export default function Ladder({navigate}) {
                       <input
                         type="radio"
                         name="ladderQ2"
-                        value={option.value}
+                        value={index}
                         ref={register({
                           validate: value =>
-                            value === 'True' || 'Your answers is not correct!',
+                            value === '2' || 'Your answers is not correct!',
                         })}
                       />
-                      <label>&nbsp;{option.label}</label>
+                      <label>&nbsp;{option}</label>
                     </li>
                   ))}
                   <ErrorMessage
@@ -190,13 +190,13 @@ export default function Ladder({navigate}) {
                       <input
                         type="radio"
                         name="ladderQ3"
-                        value={option.value}
+                        value={index}
                         ref={register({
                           validate: value =>
-                            value === 'True' || 'Your answers is not correct!',
+                            value === '0' || 'Your answers is not correct!',
                         })}
                       />
-                      <label>&nbsp;{option.label}</label>
+                      <label>&nbsp;{option}</label>
                     </li>
                   ))}
                   <ErrorMessage

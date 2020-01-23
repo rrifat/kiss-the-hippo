@@ -4,7 +4,7 @@ import React from 'react';
 import {LeftBox, RightBox} from '../components/content-box';
 import {CenteredButton, ErrorText} from '../components/lib';
 import {Input, Select} from '../components/form-input';
-import {useForm} from 'react-hook-form';
+import {useForm, ErrorMessage} from 'react-hook-form';
 import * as yup from 'yup';
 import {usePage, navigateToNextPage} from '../context/page-context';
 import * as itemClient from '../clients/item-client';
@@ -36,23 +36,24 @@ const EmployeeInfoSchema = yup.object().shape({
   mobile: yup.string().required(),
   nationalInsuranceNumber: yup.string().required(),
   nationality: yup.string().required(),
-  // proofEligibilityDocumentNumber: yup.string().required(),
-  // proofEligibility: yup.string().required(),
-  // proofEligibilityExpiryDate: yup.string().required(),
-  // primaryWorkLocation: yup.string().required(),
-  // jobTitle: yup.string().required(),
-  // salaryOrHourly: yup.string().required(),
-  // salaryPerHourPay: yup.string().required(),
-  // employeeStatusFlexibleCasual: yup.string().required(),
-  // contractedHours: yup.string().required(),
-  // nameInTheBankAccount: yup.string().required(),
-  // bankName: yup.string().required(),
-  // bankSortCode: yup.string().required(),
-  // bankAccountNumber: yup.string().required(),
-  // reportingManagerTitle: yup.string().required(),
-  // relationshipWithNextOfKin: yup.string().required(),
-  // nextOfKinEmail: yup.string().required(),
-  // nextOfKinPhone: yup.string().required(),
+  proofEligibilityDocumentNumber: yup.string().required(),
+  proofEligibility: yup.string().required(),
+  proofEligibilityExpiryDate: yup.string().required(),
+  primaryWorkLocation: yup.string().required(),
+  jobTitle: yup.string().required(),
+  salaryOrHourly: yup.string().required(),
+  salaryPerHourPay: yup.string().required(),
+  employeeStatusFlexibleCasual: yup.string().required(),
+  contractedHours: yup.string().required(),
+  nameInTheBankAccount: yup.string().required(),
+  bankName: yup.string().required(),
+  bankSortCode: yup.string().required(),
+  bankAccountNumber: yup.string().required(),
+  reportingManagerTitle: yup.string().required(),
+  relationshipWithNextOfKin: yup.string().required(),
+  nextOfKinEmail: yup.string().required(),
+  nextOfKinName: yup.string().required(),
+  nextOfKinPhone: yup.string().required(),
 });
 
 function EmployeeInfo({navigate}) {
@@ -131,6 +132,11 @@ function EmployeeInfo({navigate}) {
                 <div className="form-row">
                   <div className="form-group col-lg-9">
                     <Input type="date" name="dateOfBirth" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="dateOfBirth"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-3">
                     <Select options={gender} name="gender" ref={register} />
@@ -139,9 +145,19 @@ function EmployeeInfo({navigate}) {
                 <div className="form-row">
                   <div className="form-group col-lg-6">
                     <Input type="email" name="email" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="email"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="number" name="mobile" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="mobile"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
@@ -151,9 +167,19 @@ function EmployeeInfo({navigate}) {
                       name="nationalInsuranceNumber"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nationalInsuranceNumber"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-5">
                     <Input type="text" name="nationality" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nationality"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-group">
@@ -161,6 +187,11 @@ function EmployeeInfo({navigate}) {
                     type="text"
                     name="proofEligibilityDocumentNumber"
                     ref={register}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="proofEligibilityDocumentNumber"
+                    as={<ErrorText />}
                   />
                 </div>
 
@@ -191,6 +222,11 @@ function EmployeeInfo({navigate}) {
                       </div>
                     </li>
                   ))}
+                  <ErrorMessage
+                    errors={errors}
+                    name="proofEligibility"
+                    as={<ErrorText />}
+                  />
                 </ul>
 
                 <div className="form-group">
@@ -198,6 +234,11 @@ function EmployeeInfo({navigate}) {
                     type="date"
                     name="proofEligibilityExpiryDate"
                     ref={register}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="proofEligibilityExpiryDate"
+                    as={<ErrorText />}
                   />
                 </div>
 
@@ -208,14 +249,29 @@ function EmployeeInfo({navigate}) {
                       name="primaryWorkLocation"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="primaryWorkLocation"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="text" name="jobTitle" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="jobTitle"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-md-6">
                     <Input type="text" name="salaryOrHourly" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="salaryOrHourly"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input
@@ -223,6 +279,11 @@ function EmployeeInfo({navigate}) {
                       name="salaryPerHourPay"
                       label="Salary / Hourly Pay"
                       ref={register}
+                    />
+                    <ErrorMessage
+                      errors={errors}
+                      name="salaryPerHourPay"
+                      as={<ErrorText />}
                     />
                   </div>
                 </div>
@@ -234,9 +295,19 @@ function EmployeeInfo({navigate}) {
                       label="Employee Status - Flexible / Casual"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="employeeStatusFlexibleCasual"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="text" name="contractedHours" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="contractedHours"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
@@ -246,20 +317,40 @@ function EmployeeInfo({navigate}) {
                       name="nameInTheBankAccount"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nameInTheBankAccount"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="text" name="bankName" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="bankName"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-lg-6">
                     <Input type="text" name="bankSortCode" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="bankSortCode"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="bankAccountNumber"
                       ref={register}
+                    />
+                    <ErrorMessage
+                      errors={errors}
+                      name="bankAccountNumber"
+                      as={<ErrorText />}
                     />
                   </div>
                 </div>
@@ -310,9 +401,19 @@ function EmployeeInfo({navigate}) {
                       name="reportingManagerTitle"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="reportingManagerTitle"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-4">
                     <Input type="text" name="nextOfKinName" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nextOfKinName"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-4">
                     <Input
@@ -320,14 +421,29 @@ function EmployeeInfo({navigate}) {
                       name="relationshipWithNextOfKin"
                       ref={register}
                     />
+                    <ErrorMessage
+                      errors={errors}
+                      name="relationshipWithNextOfKin"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <div className="form-row">
                   <div className="form-group col-lg-6">
                     <Input type="email" name="nextOfKinEmail" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nextOfKinEmail"
+                      as={<ErrorText />}
+                    />
                   </div>
                   <div className="form-group col-lg-6">
                     <Input type="number" name="nextOfKinPhone" ref={register} />
+                    <ErrorMessage
+                      errors={errors}
+                      name="nextOfKinPhone"
+                      as={<ErrorText />}
+                    />
                   </div>
                 </div>
                 <CenteredButton type="submit" value="Continue" />

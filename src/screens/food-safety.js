@@ -662,9 +662,7 @@ export default function FoodSafety({navigate}) {
                 as={<ErrorText />}
               />
             </div>
-            {/* <Link to="/riddor"> */}
             <CenteredButton type="submit" value="submit" />
-            {/* </Link> */}
           </form>
         </div>
       </div>

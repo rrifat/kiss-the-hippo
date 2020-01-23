@@ -1,6 +1,17 @@
 import React from 'react';
-
+import * as itemClient from '../clients/item-client';
+import {useAuth} from '../context/auth-context';
 function Final() {
+  const {
+    userData: {user},
+  } = useAuth();
+
+  React.useEffect(() => {
+    itemClient.deleteAll(user).then(() => {
+      console.log(`deleted all data successfully for ${user}`);
+    });
+  }, [user]);
+
   return (
     <div className="col-12">
       <div className="d-flex flex-column align-items-center justify-content-center h-100">

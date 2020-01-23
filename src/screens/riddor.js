@@ -545,7 +545,7 @@ export default function Riddor({navigate}) {
                 {['True', 'False'].map((value, index) => (
                   <div className="form-check form-check-inline" key={index}>
                     <input
-                      name="riddorQ8"
+                      name="riddorQ9"
                       className="form-check-input"
                       type="radio"
                       value={value}
@@ -561,7 +561,7 @@ export default function Riddor({navigate}) {
                 ))}
                 <ErrorMessage
                   errors={errors}
-                  name="riddorQ8"
+                  name="riddorQ9"
                   as={<ErrorText />}
                 />
               </div>
@@ -629,9 +629,7 @@ export default function Riddor({navigate}) {
               </p>
               <input type="date" className="form-control mb-3" />
             </div>
-            {/* <Link to="/ladder"> */}
             <CenteredButton type="submit" value="submit" />
-            {/* </Link> */}
           </form>
         </div>
       </div>

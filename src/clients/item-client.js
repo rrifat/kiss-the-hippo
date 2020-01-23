@@ -9,7 +9,7 @@ function getResponse(type) {
         slug: item.slug,
         logo: item.logo,
         epg: item.epg || 'not available',
-        active: item.active
+        active: item.active,
       },
       user: {
         uid: item.uid,
@@ -18,14 +18,14 @@ function getResponse(type) {
         email: item.email,
         phone: item.phone,
         package: item.package,
-        active: item.active
+        active: item.active,
       },
       package: {
         uid: item.uid,
         name: item.name,
         active: item.active,
-        price: item.price
-      }
+        price: item.price,
+      },
     }[type]);
 }
 
@@ -35,25 +35,28 @@ function handleResponse(data = [], type) {
 
 function readAll(path) {
   return client(`${path}/`)
-    .then(({ data }) => handleResponse(data, path))
+    .then(({data}) => handleResponse(data, path))
     .catch(err => console.log(err));
 }
 
 function create(data) {
-  return client('data', { body: data }).catch(err => console.log(err));
+  return client('data', {body: data}).catch(err => console.log(err));
+}
+function deleteAll(user) {
+  return client(`auth/reset/${user}`).catch(err => console.log(err));
 }
 
 function update(path, data) {
-  const { uid } = data;
-  return client(`${path}/${uid}`, { body: data, method: 'PUT' }).catch(err =>
+  const {uid} = data;
+  return client(`${path}/${uid}`, {body: data, method: 'PUT'}).catch(err =>
     console.log(err)
   );
 }
 
-function remove(path, { uid, ...data }) {
-  return client(`${path}/${uid}`, { body: data, method: 'DELETE' }).catch(err =>
+function remove(path, {uid, ...data}) {
+  return client(`${path}/${uid}`, {body: data, method: 'DELETE'}).catch(err =>
     console.log(err)
   );
 }
 
-export { readAll, create, update, remove };
+export {readAll, create, update, remove, deleteAll};
