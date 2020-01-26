@@ -1,6 +1,9 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
+import {useFormContext} from 'react-hook-form';
+
 export default function SafetyTwo() {
+  const {register} = useFormContext();
   return (
     <div>
       <div className="row col-12 mt-2">
@@ -427,15 +430,22 @@ export default function SafetyTwo() {
           `}
         >
           Ensure your manager has taken you through these notes. Request your
-          manager to complete a risk assement with your.
+          manager to complete a risk assessment with your.
         </p>
         <br />
         <br />
-        <small>
-          Enter your date of Birth to confirm acknowledgement of the information
-          s above.
-        </small>
-        <input type="date" className="form-control" />
+        <div>
+          <small>
+            Enter your date of Birth to confirm acknowledgement of the
+            information s above.
+          </small>
+          <input
+            type="date"
+            className="form-control"
+            name="ack"
+            ref={register({required: true})}
+          />
+        </div>
         <br />
       </div>
     </div>

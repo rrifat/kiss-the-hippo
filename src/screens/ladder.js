@@ -2,8 +2,6 @@
 import {jsx} from '@emotion/core';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import pages from '../page-format.json';
 import {useAuth} from '../context/auth-context';
@@ -205,11 +203,18 @@ export default function Ladder({navigate}) {
                     as={<ErrorText />}
                   />
                 </ul>
-                <p>
-                  Enter your date of birth as acknowledgement of ladder policy
-                </p>
               </strong>
-              <input type="date" className="form-control" />
+            </div>
+            <div>
+              <small>
+                Enter your date of birth as acknowledgement of ladder policy
+              </small>
+              <input
+                type="date"
+                className="form-control"
+                name="ack"
+                ref={register({required: true})}
+              />
             </div>
             <CenteredButton type="submit" value="submit" />
           </form>

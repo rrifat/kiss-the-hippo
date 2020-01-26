@@ -1,11 +1,17 @@
 /**@jsx jsx */
 import {jsx} from '@emotion/core';
-import {Link} from '@reach/router';
 import {CenteredButton, DivWithScroll} from '../components/lib';
 import {useAuth} from '../context/auth-context';
+import {useForm} from 'react-hook-form';
 
 export default function EmployeeDiscount({navigate}) {
+  const {register, handleSubmit} = useForm();
   const {setPage} = useAuth();
+  const onSubmit = (_, event) => {
+    event.preventDefault();
+    setPage(page => page + 1);
+    navigate('/others');
+  };
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -92,23 +98,25 @@ export default function EmployeeDiscount({navigate}) {
               - All receipts to be kept in an envelope in the safe at end of day
               for audit purposes
             </p>
-
-            <p>
-              <strong>
-                Enter your date of birth as acknowledgement of ladder policy.
-              </strong>
-            </p>
-            <input type="date" className="form-control" />
+          </div>
+          <div class="col-sm-9">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-group">
+                <small>
+                  Enter your date of Birth to confirm acknowledgement of the
+                  information s above.
+                </small>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="ack"
+                  ref={register({required: true})}
+                />
+              </div>
+              <CenteredButton type="submit" value="continue" />
+            </form>
           </div>
         </div>
-        <CenteredButton
-          type="button"
-          value="continue"
-          onClick={() => {
-            setPage(page => page + 1);
-            navigate('/others');
-          }}
-        />
       </div>
     </DivWithScroll>
   );

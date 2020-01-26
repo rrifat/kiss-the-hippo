@@ -30,15 +30,25 @@ const routes = [
   <Final path="final" />,
 ];
 
-function RedirectHome() {
-  return <Redirect to="info" noThrow />;
+function RedirectHome({page}) {
+  const paths = [
+    '/info',
+    '/h-question',
+    '/jcl',
+    '/h-safety',
+    '/f-safety',
+    '/riddor',
+    '/ladder',
+    '/unifor',
+  ];
+  return <Redirect to={paths[page - 1]} noThrow />;
 }
 
 function AuthenticatedApp() {
   const {page} = useAuth();
   return (
     <Router className="row h-100 w-100">
-      <RedirectHome path="/" />
+      <RedirectHome path="/" page={page} />
       {routes[page - 1]}
       <NotFound default />
     </Router>

@@ -2,8 +2,6 @@
 import {jsx, css} from '@emotion/core';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 

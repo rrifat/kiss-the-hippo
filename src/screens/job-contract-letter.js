@@ -1,10 +1,9 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
+import React from 'react';
 import styled from '@emotion/styled';
 import {CenteredButton, DivWithScroll} from '../components/lib';
 import {useForm} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 
@@ -28,8 +27,26 @@ export default function JobContractLetter({navigate}) {
   const {handleSubmit, register} = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
+    const {
+      username,
+      joiningDate,
+      jobTitle,
+      workingHours,
+      expectedWorkingDays,
+      currentSalary,
+    } = data;
+
+    const expectedData = {
+      username,
+      joiningDate,
+      jobTitle,
+      workingHours,
+      expectedWorkingDays,
+      currentSalary,
+    };
+
     itemClient
-      .create({user, page, data})
+      .create({user, page, expectedData})
       .then(({data: response}) => {
         const {data} = response;
         if (data && data.nextPageNo) {
@@ -240,7 +257,10 @@ export default function JobContractLetter({navigate}) {
               employment process with Kiss the Hippo Coffee. I will provide
               letter addressing to my line manager
             </p>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackOne"
+              ref={register({required: true})}
+            />
             <h6 className="font-weight-bold">
               ANNUAL LEAVE AND PUBLIC/BANK HOLIDAYS
             </h6>
@@ -291,7 +311,10 @@ export default function JobContractLetter({navigate}) {
               pro-rata, then the appropriate payments will be deducted from your
               final pay.
             </p>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackTwo"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">SICKNESS PAY AND CONDITIONS</h6>
               <p>
@@ -314,7 +337,10 @@ export default function JobContractLetter({navigate}) {
                 other.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackThree"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">
                 CAPABILITY AND DISCIPLINARY PROCEDURES
@@ -351,7 +377,10 @@ export default function JobContractLetter({navigate}) {
                 be found in the Employee Handbook.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackFour"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">
                 NOTICE OF TERMINATION TO BE GIVEN BY EMPLOYER
@@ -403,7 +432,10 @@ export default function JobContractLetter({navigate}) {
                 related any agreements shall prevail.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackFive"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">
                 RESTRICTIVE COVENANT AGREEMENT
@@ -468,7 +500,10 @@ export default function JobContractLetter({navigate}) {
                 duties during the Relevant Period.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackSix"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">CLAUSE 2: CONFIDENTIALITY</h6>
               <p>
@@ -499,7 +534,10 @@ export default function JobContractLetter({navigate}) {
                 return to the Company any such material in their possession.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackSeven"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">CLAUSE 3 COPYRIGHT</h6>
               <p>
@@ -512,7 +550,10 @@ export default function JobContractLetter({navigate}) {
                 possession.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackEight"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">
                 CLAUSE 4: NON-POACHING OF EMPLOYEES
@@ -541,7 +582,10 @@ export default function JobContractLetter({navigate}) {
                 in the course of their duties during the Relevant Period.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackNine"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">CLAUSE 6: NON-COMPETITION</h6>
               <p>
@@ -565,7 +609,10 @@ export default function JobContractLetter({navigate}) {
                 the Company to its detriment.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackTen"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">
                 CLAUSE 7 INTELLECTUAL PROPERTY
@@ -632,7 +679,10 @@ export default function JobContractLetter({navigate}) {
                 representatives.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackEleven"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">CLAUSE 8 SOCIAL MEDIA</h6>
               <p>
@@ -658,7 +708,10 @@ export default function JobContractLetter({navigate}) {
                 effective.
               </p>
             </div>
-            <ConfirmAcknowledgement />
+            <ConfirmAcknowledgement
+              name="ackTwelve"
+              ref={register({required: true})}
+            />
             <div>
               <h6 className="font-weight-bold">AMENDING TERMS</h6>
               <p>
@@ -680,10 +733,11 @@ export default function JobContractLetter({navigate}) {
                 </strong>
               </p>
             </div>
-            <ConfirmAcknowledgement />
-            {/* <Link to="/h-safety"> */}
+            <ConfirmAcknowledgement
+              name="ackThirteen"
+              ref={register({required: true})}
+            />
             <CenteredButton type="submit" value="submit" />
-            {/* </Link> */}
           </form>
         </div>
       </div>
@@ -691,7 +745,7 @@ export default function JobContractLetter({navigate}) {
   );
 }
 
-function ConfirmAcknowledgement() {
+const ConfirmAcknowledgement = React.forwardRef(({name}, ref) => {
   return (
     <div>
       <p>
@@ -700,8 +754,8 @@ function ConfirmAcknowledgement() {
           s above.
         </mark>
       </p>
-      <Input type="date" className="form-control" />
+      <Input type="date" className="form-control" ref={ref} name={name} />
       <br />
     </div>
   );
-}
+});

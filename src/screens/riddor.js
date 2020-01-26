@@ -2,8 +2,6 @@
 import {jsx} from '@emotion/core';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import pages from '../page-format.json';
 import {useAuth} from '../context/auth-context';
@@ -623,11 +621,17 @@ export default function Riddor({navigate}) {
                   apply them.
                 </b>
               </p>
-              <p>
-                Enter your date of birth confirming the acknowledgement of above
-                information.
-              </p>
-              <input type="date" className="form-control mb-3" />
+              <div>
+                <small>
+                  Enter your date of birth as acknowledgement of riddor policy
+                </small>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="ack"
+                  ref={register({required: true})}
+                />
+              </div>
             </div>
             <CenteredButton type="submit" value="submit" />
           </form>

@@ -3,8 +3,6 @@ import {jsx, css} from '@emotion/core';
 import React from 'react';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 
@@ -660,6 +658,18 @@ export default function FoodSafety({navigate}) {
                 errors={errors}
                 name="fSafety10"
                 as={<ErrorText />}
+              />
+            </div>
+            <div>
+              <small>
+                Enter your date of Birth to confirm acknowledgement of the
+                information s above.
+              </small>
+              <input
+                type="date"
+                className="form-control"
+                name="ack"
+                ref={register({required: true})}
               />
             </div>
             <CenteredButton type="submit" value="submit" />

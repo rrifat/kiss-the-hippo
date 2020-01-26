@@ -6,9 +6,7 @@ import {CenteredButton, ErrorText} from '../components/lib';
 import {Input, Select} from '../components/form-input';
 import {useForm, ErrorMessage} from 'react-hook-form';
 import * as yup from 'yup';
-import {usePage, navigateToNextPage} from '../context/page-context';
 import * as itemClient from '../clients/item-client';
-// import {useUser} from '../context/user-context';
 import {useAuth} from '../context/auth-context';
 
 const gender = [

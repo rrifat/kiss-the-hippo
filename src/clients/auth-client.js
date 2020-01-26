@@ -35,4 +35,12 @@ function getToken() {
   return window.localStorage.getItem(localStorageKey);
 }
 
+// window.onbeforeunload = function() {
+//   window.localStorage.removeItem(localStorageKey);
+//   window.localStorage.removeItem('page-count');
+//   return;
+// };
+// window.onunload = () => {
+//   window.localStorage.clear();
+// };
 export {login, logout, getToken, getUser};

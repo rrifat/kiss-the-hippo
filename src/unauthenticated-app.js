@@ -1,31 +1,10 @@
 import React from 'react';
 import {GradientButton, ErrorText} from './components/lib';
 import {useAuth} from './context/auth-context';
-// import {useForm} from 'react-hook-form';
 
-function UnAuthenticatedApp({navigate}) {
+function UnAuthenticatedApp() {
   const {onSubmit, register, error} = useAuth();
-  // const {register, handleSubmit} = useForm();
-  // const [error, setError] = React.useState();
 
-  // const onSubmit = handleSubmit(({username, password}, e) => {
-  //   e.preventDefault();
-  //   login({
-  //     userid: username,
-  //     password: password,
-  //   })
-  //     .then(val => console.log('un auth', val))
-  //     .catch(error => {
-  //       if (error.response) {
-  //         setError(error.response.data);
-  //       } else if (error.request) {
-  //         console.log('Request error', error.request);
-  //         setError(error);
-  //       } else {
-  //         setError(error);
-  //       }
-  //     });
-  // });
   return (
     <>
       <div className="col-sm-6">

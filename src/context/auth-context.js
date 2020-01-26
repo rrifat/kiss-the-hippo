@@ -1,6 +1,4 @@
 import React from 'react';
-// import {useAsync} from 'react-async';
-// import {FullPageSpinner} from '../components/lib';
 import * as authClient from '../clients/auth-client';
 import {useForm} from 'react-hook-form';
 
@@ -13,51 +11,16 @@ function usePersistedState(key, defaultValue) {
   React.useEffect(() => {
     localStorage.setItem(key, JSON.stringify(state));
   }, [key, state]);
+
   return [state, setState];
 }
 
 function AuthProvider(props) {
-  // const [firstAttemptFinished, setFirstAttemptFinished] = React.useState(false);
-  // const {
-  //   data = {user: false},
-  //   error,
-  //   isRejected,
-  //   isPending,
-  //   isSettled,
-  //   reload,
-  // } = useAsync({
-  //   promiseFn: bootstrapData,
-  // });
-
-  // React.useLayoutEffect(() => {
-  //   if (isSettled) {
-  //     setFirstAttemptFinished(true);
-  //   }
-  // }, [isSettled]);
-
-  // if (!firstAttemptFinished) {
-  //   if (isPending) {
-  //     // return <FullPageSpinner />;
-  //     return <h1>LOADING>>>></h1>;
-  //   }
-  //   if (isRejected) {
-  //     return (
-  //       <div css={{color: 'red'}}>
-  //         <p>Uh oh... There's a problem. Try refreshing the app.</p>
-  //         <pre>{error.message}</pre>
-  //       </div>
-  //     );
-  //   }
-  // }
-
-  // const login = form => authClient.login(form).then(reload);
-  // const logout = () => authClient.logout().then(reload);
   const [page, setPage] = usePersistedState('page-count', 0);
   const [user, setUser] = React.useState(false);
   const [userData, setUserData] = React.useState({});
   const {register, handleSubmit} = useForm();
   const [error, setError] = React.useState();
-  // const token = window.localStorage.getItem('__kiss_the_hippo__');
 
   async function bootstrapData() {
     const data = await authClient.getUser();
@@ -68,6 +31,7 @@ function AuthProvider(props) {
     setUserData(data);
     return;
   }
+
   React.useEffect(() => {
     bootstrapData();
   }, [user]);
@@ -81,8 +45,6 @@ function AuthProvider(props) {
       })
       .then(({data}) => {
         setUser(true);
-        // data.access_token
-        // data.nextPageNo
         setPage(data.nextPageNo);
       })
       .catch(error => {

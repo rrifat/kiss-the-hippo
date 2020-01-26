@@ -2,8 +2,6 @@
 import {jsx, css} from '@emotion/core';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
-import {usePage, navigateToNextPage} from '../context/page-context';
-// import {useUser} from '../context/user-context';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 
@@ -162,11 +160,16 @@ export default function Others({navigate}) {
               </div>
               <div className="form-group row">
                 <div className="col-12">
-                  <label>
+                  <small>
                     Please enter your date of birth to confirm your
                     acknowledgement of above information.
-                  </label>
-                  <input type="date" className="form-control mb-3" />
+                  </small>
+                  <input
+                    type="date"
+                    name="ack"
+                    className="form-control mb-3"
+                    ref={register({required: true})}
+                  />
                 </div>
               </div>
             </div>
