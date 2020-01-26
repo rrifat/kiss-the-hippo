@@ -39,7 +39,11 @@ function RedirectHome({page}) {
     '/f-safety',
     '/riddor',
     '/ladder',
-    '/unifor',
+    '/uniform',
+    '/employee-discount',
+    '/others',
+    '/nutshell',
+    '/final',
   ];
   return <Redirect to={paths[page - 1]} noThrow />;
 }
