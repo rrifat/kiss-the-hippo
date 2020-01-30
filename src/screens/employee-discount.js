@@ -16,13 +16,13 @@ export default function EmployeeDiscount({navigate}) {
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <div className="row">
-          <div class="col-sm-9 mb-3">
+          <div className="col-sm-9 mb-3">
             <div className="pt-5 pb-3">
-              <h3 class="text-uppercase text-center">
+              <h3 className="text-uppercase text-center">
                 <strong>EMPLOYEE DISCOUNT POLICY</strong>
               </h3>
             </div>
-            <h6 class="pb-2">
+            <h6 className="pb-2">
               <strong> Discounts on the shift:</strong>
             </h6>
             <h6>
@@ -57,8 +57,8 @@ export default function EmployeeDiscount({navigate}) {
             </p>
           </div>
 
-          <div class="col-sm-9 mb-3">
-            <h6 class="pb-2">
+          <div className="col-sm-9 mb-3">
+            <h6 className="pb-2">
               <strong>Discounts off the shift: </strong>
             </h6>
             <h6>
@@ -99,7 +99,7 @@ export default function EmployeeDiscount({navigate}) {
               for audit purposes
             </p>
           </div>
-          <div class="col-sm-9">
+          <div className="col-sm-9">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
                 <small>

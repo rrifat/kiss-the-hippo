@@ -46,7 +46,7 @@ export default function JobContractLetter({navigate}) {
     };
 
     itemClient
-      .create({user, page, expectedData})
+      .create({user, page, data: expectedData})
       .then(({data: response}) => {
         const {data} = response;
         if (data && data.nextPageNo) {
@@ -54,7 +54,9 @@ export default function JobContractLetter({navigate}) {
           navigate('/h-safety');
         }
       })
-      .catch(err => console.log(err.response));
+      .catch(err => {
+        console.log(err.response);
+      });
   };
   return (
     <DivWithScroll className="col-sm-12 h-100">

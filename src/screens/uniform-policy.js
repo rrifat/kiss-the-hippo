@@ -39,14 +39,14 @@ export default function UniformPolicy({navigate}) {
       <div className="container">
         <div className="row">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="col-sm-9 mb-2 text-center">
+            <div className="col-sm-9 mb-2 text-center">
               <div className="pt-5 pb-3">
-                <h3 class="mb-4">
+                <h3 className="mb-4">
                   <strong>Uniform Acceptance Form</strong>
                 </h3>
               </div>
             </div>
-            <div class="col-sm-9 mb-4">
+            <div className="col-sm-9 mb-4">
               <p>The following 6 items have been receved in good condition.</p>
               <ul
                 css={css`
@@ -74,7 +74,7 @@ export default function UniformPolicy({navigate}) {
                 />
               </ul>
             </div>
-            <div class="col-sm-9 mb-4">
+            <div className="col-sm-9 mb-4">
               <p>
                 Every item is worth &pound; 25 and should be handed back to the
                 Company in the end of the employment. In the event of loss of

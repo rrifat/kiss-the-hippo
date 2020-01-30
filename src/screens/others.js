@@ -33,7 +33,7 @@ export default function Others({navigate}) {
       .then(({data: response}) => {
         const {data} = response;
         if (data && data.nextPageNo) {
-          setPage(data.nextPageNo);
+          setPage(data.nextPageNo + 1);
           navigate('/nutshell');
         }
       })

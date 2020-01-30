@@ -20,7 +20,7 @@ export default function Nutshell({navigate}) {
       .then(({data: response}) => {
         const {data} = response;
         if (data && data.nextPageNo) {
-          setPage(data.nextPageNo);
+          setPage(data.nextPageNo + 1);
           navigate('/final');
         }
       })
