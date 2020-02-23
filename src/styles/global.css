@@ -87,6 +87,22 @@ input.username:focus + .icon,
 input.password:focus + .icon {
   color: #551120;
 }
+.info-screen-left {
+  color: #0d0c0c;
+  padding: 10px;
+}
+.info-screen-left input {
+  /* height: 49px; */
+  background: #f6efed;
+  border: none;
+  padding-left: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.info-screen-left select {
+  background: #f6efed;
+  color: #495057;
+}
 
 /* Riad's CSS */
 

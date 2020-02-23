@@ -34,7 +34,7 @@ function LeftBox({children}) {
         &::-webkit-scrollbar-thumb {
           border-radius: 10px;
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          background-color: #551120;
+          background-color: #EF3F29;
         }
         &::-webkit-scrollbar-track {
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
