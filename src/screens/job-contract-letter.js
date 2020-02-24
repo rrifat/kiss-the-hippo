@@ -81,7 +81,13 @@ export default function JobContractLetter({navigate}) {
           </strong>
         </div>
         <br />
-        <div className="row col-sm-12">
+        <div
+          className="row col-sm-12"
+          css={css`
+            text-align: justify;
+            justify-content: inter-word;
+          `}
+        >
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-group row no-gutters">
               <label className="col-auto col-form-label">
@@ -98,32 +104,19 @@ export default function JobContractLetter({navigate}) {
               </div>
             </div>
             <div className="form-group row no-gutters">
-              <label className="col-form-label">
-                Your employment began on&nbsp;&nbsp;
-              </label>
-              <div>
-                <Input
-                  type="date"
-                  className="form-control"
-                  name="joiningDate"
-                  ref={register({required: true})}
-                />
-              </div>
-              <label className="col-form-label">
-                No previous employment counts as part of your period of
-                continuous employment.
-              </label>
+              <p className="col-form-p">
+                Your employment began on <BlankPut /> No previous employment
+                counts as part of your period of continuous employment. The
+                first three months of your employment shall be a probationary
+                period and your employment may be terminated during this period
+                at any time on one week's prior notice. We may, at our
+                discretion, extend this period for up to a further three months.
+                During this probationary period your performance and suitability
+                for continued employment will be monitored. At the end of your
+                probationary period you will be informed in writing if you have
+                successfully completed your probationary period.
+              </p>
             </div>
-            <p>
-              The first three months of your employment shall be a probationary
-              period and your employment may be terminated during this period at
-              any time on one week's prior notice. We may, at our discretion,
-              extend this period for up to a further three months. During this
-              probationary period your performance and suitability for continued
-              employment will be monitored. At the end of your probationary
-              period you will be informed in writing if you have successfully
-              completed your probationary period.
-            </p>
             <h6 className="font-weight-bold">JOB TITLE</h6>
             <div className="form-group row no-gutters">
               <label className="col-auto col-form-label">
@@ -163,76 +156,33 @@ export default function JobContractLetter({navigate}) {
               with the Company.
             </p>
             <h6 className="font-weight-bold">HOURS OF WORK</h6>
-            <div className="form-group row no-gutters">
-              <label className="col-form-label">
-                Your normal hours of work are normally&nbsp;&nbsp;
-              </label>
-              <div className="col-1">
-                <Input
-                  type="number"
-                  className="form-control"
-                  name="workingHours"
-                  ref={register({required: true})}
-                />
-              </div>
-              <label className="col-form-label">
-                per week, Monday to Sunday with agreed minutes of paid/ unpaid
-                break each shift /day.
-              </label>
-              <label className="col-form-label">
-                You will usually be expected to work&nbsp;&nbsp;&nbsp;
-              </label>
-              <div className="col-1">
-                <Input
-                  type="number"
-                  className="form-control"
-                  name="expectedWorkingDays"
-                  ref={register({required: true})}
-                />
-              </div>
-              <label className="col-form-label">
+            <div
+              className="form-group row no-gutters"
+              css={css`
+                line-height: 1.8em;
+              `}
+            >
+              <p>
+                Your normal hours of work are normally <BlankPut /> per week,
+                Monday to Sunday with agreed minutes of paid/ unpaid break each
+                shift /day. You will usually be expected to work <BlankPut />{' '}
                 days from seven days. Actual days, start/finish times will be
-                variable and in accordance with the rota.
-              </label>
-              <label className="col-form-label">
-                You may be required to work additional hours when authorised and
-                as necessitated by the needs of the business.
-              </label>
+                variable and in accordance with the rota. You may be required to
+                work additional hours when authorised and as necessitated by the
+                needs of the business.
+              </p>
             </div>
             <h6 className="font-weight-bold">REMUNERATION</h6>
             <div className="form-group row no-gutters">
-              <label className="col-auto col-form-label">
-                Your salary is currently&nbsp;&nbsp;
-              </label>
-              <div className="col-2 input-group-prepend">
-                <span
-                  className="input-group-text"
-                  css={css`
-                    background-color: transparent;
-                    border: none;
-                  `}
-                >
-                  £
-                </span>
-                <Input
-                  type="number"
-                  className="form-control"
-                  name="currentSalary"
-                  ref={register({required: true})}
-                />
-              </div>
-              <label className="col-form-label">
-                per hour/ annum payable monthly by BACS monthly in arrears as
-                detailed on your pay statement.
-              </label>
+              <p>
+                Your salary is currently £ <BlankPut /> per hour/ annum payable
+                monthly by BACS monthly in arrears as detailed on your pay
+                statement. Your salary is set at such a level as to compensate
+                for the need for occasional additional hours. We will ensure
+                that you always receive no less than the National Minimum
+                Wage/National Living Wage.
+              </p>
             </div>
-            <p>
-              Your salary is set at such a level as to compensate for the need
-              for occasional additional hours. We will ensure that you always
-              receive no less than the National Minimum Wage/National Living
-              Wage.
-            </p>
-
             <h6 className="font-weight-bold">COLLECTIVE AGREEMENTS</h6>
             <p>
               No collective agreements directly affect your terms and conditions
@@ -739,6 +689,21 @@ export default function JobContractLetter({navigate}) {
               name="ackThirteen"
               ref={register({required: true})}
             />
+            <br />
+            <div className="row">
+              <div className="col-md-3 col-sm-6">
+                <NameSignText>Employee Name</NameSignText>
+              </div>
+              <div className="col-md-3 col-sm-6">
+                <NameSignText>Employee Signature</NameSignText>
+              </div>
+              <div className="col-md-3 col-sm-6">
+                <NameSignText>Manager Name</NameSignText>
+              </div>
+              <div className="col-md-3 col-sm-6">
+                <NameSignText>Manager Signature</NameSignText>
+              </div>
+            </div>
             <CenteredButton type="submit" value="submit" />
           </form>
         </div>
@@ -747,11 +712,26 @@ export default function JobContractLetter({navigate}) {
   );
 }
 
+const BlankPut = styled.span`
+  border: 1px solid grey;
+  width: 135px;
+  display: inline-block;
+`;
+
+const NameSignText = styled.p`
+  border-bottom: 2px solid grey;
+  padding-bottom: 55px;
+`;
+
 const ConfirmAcknowledgement = React.forwardRef(({name}, ref) => {
   return (
     <div>
       <p>
-        <mark>
+        <mark
+          css={css`
+            background: #ffff00;
+          `}
+        >
           Enter your date of Birth to confirm acknowledgement of the information
           s above.
         </mark>

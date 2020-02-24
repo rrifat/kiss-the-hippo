@@ -368,34 +368,6 @@ export default function HealthSafety({navigate}) {
                     </div>
                     <div className="form-group row">
                       <label className="col-12 col-form-label">
-                        What type of extinguisher should you use on a deep fat
-                        fryer fire?
-                      </label>
-                      <div className="col-12">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="hSafety11"
-                          ref={register({required: true})}
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group row">
-                      <label className="col-12 col-form-label">
-                        In the kitchen, where is the fire suppression system
-                        activation point (if applicable)?
-                      </label>
-                      <div className="col-12">
-                        <input
-                          type="text"
-                          className="form-control"
-                          name="hSafety12"
-                          ref={register({required: true})}
-                        />
-                      </div>
-                    </div>
-                    <div className="form-group row">
-                      <label className="col-12 col-form-label">
                         In the kitchen, where is the gas shut-off point?
                       </label>
                       <div className="col-12">

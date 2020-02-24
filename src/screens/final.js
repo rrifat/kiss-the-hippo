@@ -15,13 +15,13 @@ function Final() {
   return (
     <div className="col-12">
       <div className="d-flex flex-column align-items-center justify-content-center h-100">
-        <img src="images/trophy.png" alt="trophy" className="fluid" />
+        <img src="images/kiss-hippo-logo.png" alt="trophy" className="fluid" />
         <h2
           style={{
             fontFamily: "'Lobster', cursive",
             fontSize: '4rem',
             padding: '20px 0px',
-            color: '#da8d70',
+            color: 'black',
           }}
         >
           Congratulations!!
@@ -29,23 +29,24 @@ function Final() {
         <p
           style={{
             fontFamily: "'Oxygen', sans-serif",
-            fontSize: '1.5rem',
+            fontSize: '1.3rem',
             color: '#581a27',
           }}
         >
-          You've completed your employment process.
+          You have successfully completed followings:
         </p>
-        <p
+        <ul
           style={{
             fontFamily: "'Oxygen', sans-serif",
-            fontSize: '1.5rem',
+            fontSize: '1.2rem',
             color: '#581a27',
             textAlign: 'center',
           }}
         >
-          Please contact to your manager with your full report for any futher
-          instructions.
-        </p>
+          <li>Employment Questionnaires</li>
+          <li>Health and Safety Level 1</li>
+          <li>Food Safety Level 1</li>
+        </ul>
       </div>
     </div>
   );

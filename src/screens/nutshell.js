@@ -30,20 +30,31 @@ export default function Nutshell({navigate}) {
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="row col-sm-9 offset-sm-1">
+          <div
+            className="row col-sm-9 offset-sm-1"
+            css={css`
+              text-align: justify;
+              justify-content: inter-word;
+            `}
+          >
             <div className="pt-5 pb-3">
               <h5 className="font-weight-bold">OUR COFFEE AND EQUIPMENTS:</h5>
               <p>
                 With seasonality in mind, our mission is to ethically source
                 truly exceptional coffee lots from quality-focused producers
                 around the globe. the coffee is then roasted in-house using the
-                most environmentally friendly roaster, the loring smart roaster.
-                each coffee is carefully roasted to safeguard its individual
-                flavour identit y and the taste of its terroir.
+                most environmentally friendly roaster, the{' '}
+                <strong>Loring S15 Falcon</strong> smart roaster. The patented
+                roasting system uses almost entirely convective heat transfer,
+                cleaning and recycling the hot air as it goes. This reduces fuel
+                consumption and emissions at the same time making it a very
+                ecological, economical and consistent performer. each coffee is
+                carefully roasted to safeguard its individual flavour identity
+                and the taste of its terroir
               </p>
               <MultipleChoices
-                name="roastingMachine"
-                options={['gisenw140', 'Loring', 'Genio 6']}
+                name="nutshell1"
+                options={['Gisenw140', 'Loring S15 Falcon', 'Genio 6']}
                 question="What is the  name of our Roasting Machine:"
                 ref={register({
                   validate: value =>
@@ -52,200 +63,22 @@ export default function Nutshell({navigate}) {
               />
               <ErrorMessage
                 errors={errors}
-                name="roastingMachine"
+                name="nutshell1"
                 as={<ErrorText />}
               />
             </div>
             <div>
-              <h6 className="font-weight-bold">Loring S15 Falcon</h6>
-              <p>
-                At the heart of our roastery is the beautifully utilitarian most
-                environment friendly Loring roaster. The patented roasting
-                system uses almost entirely convective heat transfer, cleaning
-                and recycling the hot air as it goes. This reduces fuel
-                consumption and emissions at the same time making it a very
-                ecological, economical and consistent performer.
-              </p>
-              <MultipleChoices
-                name="loring"
-                options={[
-                  'environment friendliness',
-                  'cost effective',
-                  'Zero waste',
-                ]}
-                question="Which one is the key feature of loring:"
-                ref={register({
-                  validate: value =>
-                    value === '0' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage errors={errors} name="loring" as={<ErrorText />} />
-            </div>
-            <div className="py-3">
-              <h6 className="font-weight-bold">Kees van der Westen</h6>
-              <p>
-                Truly the Rolls Royce of coffee machines. Nothing under the hood
-                is off the shelf for this beauty. Built to order and custom made
-                to our desired specifications, this is a unique coffee machine
-                that marries striking design and engineering excellence.
-              </p>
-              <MultipleChoices
-                name="kees"
-                options={['Kees van der Westen', 'mastrena', 'La mazrocco']}
-                question="Which one is our coffee machine:"
-                ref={register({
-                  validate: value =>
-                    value === '0' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage errors={errors} name="kees" as={<ErrorText />} />
-            </div>
-            <div>
-              <h6 className="font-weight-bold">Mythos One Clima Pro</h6>
-              <p>
-                The most consistent <b>grinder</b> on the market (until the
-                Mythos 2 is released!), the grading chamber and burrs are
-                temperature controlled to counteract the fluctuations in
-                atmospheric conditions which would normally affect the grind.
-              </p>
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Mahlkonig EK43S</h6>
-              <p>
-                The new update of the classic filter/bulk grinder. This version
-                is way more barista friendly with an improved front dial, hardy
-                power switch and lower profile. The flat vertical burrs of the
-                EK43 produce the most consistent grind of any grinder in this
-                price bracket meaning more even extractions.
-              </p>
-              <MultipleChoices
-                name="mahlkonig"
-                options={['mythos 2', 'mythos 1', 'MahlkonigEK43s']}
-                question="Which one is not our coffee grinder:"
-                ref={register({
-                  validate: value =>
-                    value === '0' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="mahlkonig"
-                as={<ErrorText />}
-              />
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">PuqPress</h6>
-              <p>
-                <b>Tamping</b> is undoubtedly one of the most inconsistent
-                variables in espresso preparation. The PuqPress tamps using the
-                same pressure every time, delivering consistency and saving
-                baristas from RSI!
-              </p>
-              <MultipleChoices
-                name="puqpress"
-                options={['Kees van der Westen', 'mastrena', 'PugPress']}
-                question="Which one is our tamping machine"
-                ref={register({
-                  validate: value =>
-                    value === '2' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="puqpress"
-                as={<ErrorText />}
-              />
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">
-                Marco MIX and custom drip tray
-              </h6>
-              <p>
-                Our brew bar features a custom made drip tray which houses Acaia
-                scales and a Marco MIX variable temperature boiler. Marco make
-                the most elegant hot water delivery equipment on the market and
-                the MIX is the newest addition to their covetable range of
-                boiler/font combos. This allows us to dispense water at three
-                different user defined temperatures.
-              </p>
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Acaia Orion bean dosers</h6>
-              <p>
-                The latest “must have” product from scale manufacturer Acaia.
-                These dosing units very cleverly dispense a user defined dose
-                each time and constantly adjust themselves to remain accurate.
-              </p>
-              <MultipleChoices
-                name="orion"
-                options={['Acaia Orion bean dosers', 'marc mix', 'mastrena']}
-                question="Which one is not our appliance"
-                ref={register({
-                  validate: value =>
-                    value === '2' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage errors={errors} name="orion" as={<ErrorText />} />
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Roasting</h6>
-              <p>
-                Our roasting style is light to medium depending on what we want
-                to emphasis from the coffee. We approach roasting methodically
-                and sensitively, aiming to preserve and enhance all of the
-                natural flavors which resulted from the careful growing,
-                harvesting and processing before it reached us.
-              </p>
-              <MultipleChoices
-                name="roasting"
-                options={['Medium to dark', 'light to medium', 'dark roast']}
-                question="Which one from the below is our coffee roasting-?"
-                ref={register({
-                  validate: value =>
-                    value === '1' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="roasting"
-                as={<ErrorText />}
-              />
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Organic Certification</h6>
+              <h6 className="font-weight-bold">ORGANIC CERTIFICATION</h6>
               <p>
                 Part of our brand values are supporting sustainable and
                 ecological agriculture. One of the ways we felt would be most
-                effective is to buy mainly organic certified coffees. We made a
-                commitment to purchasing at least 80%of our green coffee from
-                certified producers. Its extremely difficult to find certified
-                coffee, so the other 20% of our offerings are reserved for
-                outstanding coffees from these sources. Our roasting procedures
-                are certified by the Soil Association. FYI Our house blend
-                George Street is 100% Organic.
+                effective is ensure our house espresso blend George Street
+                contains 100% certified organic coffee by the Soil Association.
               </p>
               <MultipleChoices
-                name="organic1"
-                options={['48%', '60%', '80%']}
-                question="What percentage of coffee we are committed to buy from certified producers-"
-                ref={register({
-                  validate: value =>
-                    value === '2' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage
-                errors={errors}
-                name="organic1"
-                as={<ErrorText />}
-              />
-              <MultipleChoices
-                name="organic2"
-                options={[
-                  'Organic Blend',
-                  'George street blend',
-                  'Donna Blend',
-                ]}
-                question="What is the name of our houseblend"
+                name="nutshell2"
+                options={['Fair trade Association', 'Soil Association']}
+                question="Which organization has certified us for our organic roastery"
                 ref={register({
                   validate: value =>
                     value === '1' || 'Your answers is not correct!',
@@ -253,376 +86,73 @@ export default function Nutshell({navigate}) {
               />
               <ErrorMessage
                 errors={errors}
-                name="organic2"
+                name="nutshell2"
                 as={<ErrorText />}
               />
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">
-                Premier training campus and training
-              </h6>
-              <p>
-                Kiss the hippo’s professional barista training is a curriculum
-                led by our award-winning team of coffee experts. The courses are
-                designed to elevate someone who has never made a coffee in their
-                life to specialty barista standard. These take place in our
-                premium training campus certified by the specialty coffee
-                association. Our campus is certified by the specialty coffee
-                association as an official premier training campus. We are
-                proudly the 4th in london and 6th in the uk with this
-                distinction. It serves as a centre for all things coffee, from
-                theory to practice, tasting to training. We offer sca approved
-                barista, coffee brewing and sensory programmes, raising the
-                skill level of coffee professionals to world-class.
-              </p>
               <MultipleChoices
-                name="training"
-                options={['2nd', '5th', '6th']}
-                question="Where’s our training campus official  standing in UK-"
+                name="nutshell3"
+                options={['Donna Blend', 'George street blend']}
+                question="What is the name of our house blend?"
                 ref={register({
                   validate: value =>
-                    value === '2' || 'Your answers is not correct!',
+                    value === '1' || 'Your answers is not correct!',
                 })}
               />
               <ErrorMessage
                 errors={errors}
-                name="training"
+                name="nutshell3"
                 as={<ErrorText />}
               />
             </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Sustainability</h6>
+            <div className="py-3">
+              <h6 className="font-weight-bold">SUSTAINABILITY</h6>
               <p>
-                Sustainability is at the heart of kiss the hippo coffee, from
-                using the lowest impact coffee roaster, the loring smart
+                Sustainability is at the heart of Kiss the Hippo Coffee, from
+                using the lowest impact coffee roaster, the Loring smart
                 roaster, to the compostable materials used at the very end of
                 the coffee making process (cups, lids, straws, etc.). In
                 addition to compostable solutions we maximise the use of
-                recycled and recycable packaging materials.
-              </p>
-              <p>
-                Our equipment is selected for its minimal environmental impact,
-                as well as its quality and precision. Annually, we save 13.6
-                tonnes of co2 emission, the carbon offset of which equates to
-                Growing 204 trees over the course of a decade. We achieve this
-                by sending all our used coffee grounds to Bio-bean, a company
-                that produces sustainable transport fuel from this waste. Our
-                commitment to driving positive change for the environment with a
-                360 degree approach to sustainabilit y at every stage of the
-                process truly sets us apart.
+                recycled and recyclable packaging materials. Our equipment is
+                selected for its minimal environmental impact, as well as its
+                quality and precision. Annually, we save 13.6 tonnes of CO2
+                emission, the carbon offset of which equates to growing 204
+                trees over the course of a decade. We achieve this by sending
+                all our used coffee grounds to Bio-bean, a company that produces
+                sustainable transport fuel from this waste.
               </p>
               <MultipleChoices
-                name="sus1"
-                options={['16.3 ton', '61.3 ton', '13.6ton']}
-                question="How much we save currently in co2 omission"
-                ref={register({
-                  validate: value =>
-                    value === '2' || 'Your answers is not correct!',
-                })}
-              />
-              <ErrorMessage errors={errors} name="sus1" as={<ErrorText />} />
-              <MultipleChoices
-                name="sus2"
-                options={['first mile', 'biffa', 'Bio bean']}
+                name="nutshell4"
+                options={['First mile', 'Bio bean']}
                 question="Which company s turning our coffee ground waste to fuel-"
                 ref={register({
                   validate: value =>
-                    value === '2' || 'Your answers is not correct!',
+                    value === '1' || 'Your answers is not correct!',
                 })}
               />
-              <ErrorMessage errors={errors} name="sus2" as={<ErrorText />} />
+              <ErrorMessage
+                errors={errors}
+                name="nutshell4"
+                as={<ErrorText />}
+              />
             </div>
-            <div className="pb-3">
-              <h5 className="font-weight-bold">Our Food:</h5>
+            <div>
+              <h6 className="font-weight-bold">
+                SUPPORTING THE FUTURE OF COFFEE
+              </h6>
               <p>
-                Please note this information is in addition to allergen
-                information which is on a separate document and will also be
-                readily available in front of house to consult if you have a
-                customer query. When advising the customer please be positive
-                about all menu items – you can have a favourite dish to
-                recommend but you should not proclaim your “least favourite”
-                items! As a company, one of our core values is environmental
-                sustainability and ethically sourced ingredients.
+                Coffee producers often shoulder the heaviest price pressure in
+                the coffee industry. Each year, costs increase as climate change
+                makes coffee production all the more challenging. Unfortunately,
+                the global commodity price for coffee hasn’t grown to reflect
+                this. We believe that price increases and stability are needed
+                to maintain a healthy industry, which is why we are dedicated to
+                paying at least 50% above the Fairtrade price for all our
+                coffees.
               </p>
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Meat, Fish and Eggs</h6>
-              <p>
-                We have sourced only high welfare meat and fish with
-                environmentally sustainable credentials.
-              </p>
-
-              <ul
-                css={css`
-                  list-style-type: disc;
-                  padding-left: 50px;
-                `}
-              >
-                <li>
-                  Our ham is free range from <b>Dingely Dell</b> farm in Suffolk
-                </li>
-                <li>
-                  Our bacon is free range and cured by a small-scale producer
-                  called <b>Moons Green</b> in Kent
-                </li>
-                <li>
-                  Our chicken is organic and free range and from{' '}
-                  <b>Haye Farm</b>
-                  in South Devon
-                </li>
-                <li>
-                  Our smoked salmon is farmed organic by <b>Severn and Wye</b>,
-                  located on the River Severn in Gloucester
-                </li>
-                <li>
-                  Our eggs are “<b>Breckland Browns</b>”, they are free range
-                  and are from a farm called Norfolk Quail in Suffolk.
-                </li>
-              </ul>
-              <p className="">Please identify true/ false statement –</p>
-              <ol
-                css={css`
-                  padding-left: 50px;
-                `}
-              >
-                <li>
-                  <MultipleChoices
-                    name="ham"
-                    options={['False', 'True']}
-                    question="Our Ham is free range"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage errors={errors} name="ham" as={<ErrorText />} />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="chicken"
-                    options={['False', 'True']}
-                    question="Our chicken is supplied by Haye Farm"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="chicken"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="bacon"
-                    options={['False', 'True']}
-                    question="Our bacon is supplied by Dingely Dell"
-                    ref={register({
-                      validate: value =>
-                        value === '0' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="bacon"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="salmon1"
-                    options={['False', 'True']}
-                    question="Our salmon is organic"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="salmon1"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="salmon2"
-                    options={['False', 'True']}
-                    question="Our salmons are Breckland Browns"
-                    ref={register({
-                      validate: value =>
-                        value === '0' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="salmon2"
-                    as={<ErrorText />}
-                  />
-                </li>
-              </ol>
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Dairy</h6>
-              <ul
-                css={css`
-                  list-style-type: disc;
-                  padding-left: 50px;
-                `}
-              >
-                <li>
-                  Our cheddar is <b>Godminster Cheddar</b> and is organic
-                </li>
-                <li>
-                  Our yoghurt is authentic Greek yoghurt called <b>Kolios</b>
-                </li>
-                <li>Our butter is French butter</li>
-              </ul>
-            </div>
-            <div className="pb-3">
-              <h6 className="font-weight-bold">Bread</h6>
-              <ul
-                css={css`
-                  list-style-type: disc;
-                  padding-left: 50px;
-                `}
-              >
-                <li>Our sourdough bread for toast is by The Flour Station</li>
-                <li>Our baguettes are made by Food Lab</li>
-                <li>
-                  Our croissants are freshly baked each <b>morning in-house</b>
-                </li>
-                <li>
-                  All the cakes are made and baked <b>fresh in house</b>
-                </li>
-              </ul>
-              <p>Please identify true/ false statement –</p>
-              <ol
-                css={css`
-                  padding-left: 50px;
-                `}
-              >
-                <li>
-                  <MultipleChoices
-                    name="yoghurt"
-                    options={['False', 'True']}
-                    question="Our yoghurt is called Kolios"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="yoghurt"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="butter"
-                    options={['False', 'True']}
-                    question="Our butter is french"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="butter"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="crossaints"
-                    options={['False', 'True']}
-                    question="Our crossaints are supplied by external supplier"
-                    ref={register({
-                      validate: value =>
-                        value === '0' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="crossaints"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="chedder"
-                    options={['False', 'True']}
-                    question="Our chedder is organic"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="chedder"
-                    as={<ErrorText />}
-                  />
-                </li>
-                <li>
-                  <MultipleChoices
-                    name="cakes"
-                    options={['False', 'True']}
-                    question="Our cakes are baked in house"
-                    ref={register({
-                      validate: value =>
-                        value === '1' || 'Your answers is not correct!',
-                    })}
-                  />
-                  <ErrorMessage
-                    errors={errors}
-                    name="cakes"
-                    as={<ErrorText />}
-                  />
-                </li>
-              </ol>
-            </div>
-            <div className="col-12 pb-3">
-              <div className="row">
-                <div className="col-6">
-                  <h6 className="font-weight-bold">WHAT’S GLUTEN FREE?</h6>
-                  <ul
-                    css={css`
-                      list-style-type: disc;
-                      padding-left: 50px;
-                    `}
-                  >
-                    <li>Brownies</li>
-                    <li>Coconut cookies</li>
-                    <li>All to-go pots</li>
-                    <li>Porridge</li>
-                  </ul>
-                </div>
-                <div className="col-6">
-                  <h6 className="font-weight-bold">WHAT’S VEGAN?</h6>
-                  <ul
-                    css={css`
-                      list-style-type: disc;
-                      padding-left: 50px;
-                    `}
-                  >
-                    <li>Coyo chia pot</li>
-                    <li>Hummus pot</li>
-                    <li>Banana date cake</li>
-                    <li>Porridge</li>
-                    <li>Avocado on toast</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div className="pb-3">
               <MultipleChoices
-                name="gluttenFree"
-                options={['chia pot', 'brownie', 'porridge']}
-                question="Which one is not Gluten free?"
+                name="nutshell5"
+                options={['50% above', '20% above']}
+                question="How much we are dedicated above Fairtrade price of all of our coffee?  "
                 ref={register({
                   validate: value =>
                     value === '0' || 'Your answers is not correct!',
@@ -630,19 +160,449 @@ export default function Nutshell({navigate}) {
               />
               <ErrorMessage
                 errors={errors}
-                name="gluttenFree"
+                name="nutshell5"
                 as={<ErrorText />}
               />
+            </div>
+            <div className="pb-3">
+              <h6 className="font-weight-bold">GOING THE EXTRA MILE</h6>
+              <p>
+                Stewardship is an imperative part of coffee preservation. We
+                support coffee conservation efforts by making regular financial
+                contributions to the research organizations tasked with
+                discovering sustainable solutions. For every kilo of coffee we
+                buy, we donate 3 pence to the World Coffee Research program,
+                which is double the amount WCR has asked of the industry to
+                support its research. We are also the first coffee roaster to
+                attach our growth to the funding of the Kew Gardens coffee
+                research program - an initiative we are proud to support with 2
+                pence for every kilo of coffee we buy. Finally, we partner with
+                the Just a Drop clean water foundation in an effort to support
+                the places our coffee comes from. To read more about our work
+                supplying the 228 students of the Mwambui Secondary School in
+                Kenya with safe water.
+              </p>
+              <p
+                css={css`
+                  line-height: 1.8em;
+                `}
+              >
+                We make picking coffees easier by breaking our single origin
+                coffees into four categories they are:
+                <ul>
+                  <li>
+                    Mellow & Balanced – Coffees that everyone loves and are easy
+                    to drink with a low acidity.
+                  </li>
+                  <li>
+                    Vibrant & Bright – Coffees that are high in acidity with a
+                    lot of vibrant fruit flavours.
+                  </li>
+                  <li>
+                    Unique & Interesting – Coffees that will change people’s
+                    mind of what a coffee can taste like. They are bursting in
+                    fruitiness.
+                  </li>
+                  <li>
+                    Rare & Acclaimed – The worlds most awarded and beloved
+                    coffees. They are the best coffees grown each year.
+                  </li>
+                </ul>
+              </p>
               <MultipleChoices
-                name="vegan"
-                options={['Coconut cookies ', 'brownie', 'porridge']}
-                question="Which one is vegan?"
+                name="nutshell6"
+                options={['Bold & Creamy', 'Mellow & Balanced']}
+                question="Which Single Origin Type is NOT one of ours-"
                 ref={register({
                   validate: value =>
-                    value === '2' || 'Your answers is not correct!',
+                    value === '0' || 'Your answers is not correct!',
                 })}
               />
-              <ErrorMessage errors={errors} name="vegan" as={<ErrorText />} />
+              <ErrorMessage
+                errors={errors}
+                name="nutshell6"
+                as={<ErrorText />}
+              />
+            </div>
+            <div className="pb-3">
+              <h6 className="font-weight-bold">MENU INFORMATION</h6>
+              <p>
+                <em>
+                  This is a list of top tips from our menu at Kiss the Hippo, it
+                  is not exhaustive and it can vary – please always check with
+                  someone from the kitchen if you’re unsure about something
+                </em>
+              </p>
+              <div>
+                <ul
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  <li>
+                    Cakes
+                    <ul
+                      css={css`
+                        padding-left: 40px;
+                        margin-bottom: 16px;
+                        list-style-type: disc;
+                      `}
+                    >
+                      <li>
+                        BAKED IN HOUSE - We have a selection of cakes, all baked
+                        by the kitchen team. Our croissants and pain au
+                        chocolate baked in house each morning. All the other
+                        cakes are made from scratch.
+                      </li>
+                      <li>
+                        UNAVAILBLE ITEMS - We make the cinnamon rolls in house
+                        each morning, which is why they are sometimes
+                        unavailable first thing. Anything else, ask the kitchen
+                        – they should have more
+                      </li>
+                      <li>
+                        GLUTEN FREE – we have brownies, hazelnut flapjacks and
+                        coconut cookies which are all gluten free. Our banana
+                        and date cake is made using wholemeal spelt flour, which
+                        some gluten sensitive people can tolerate.
+                      </li>
+                      <li>
+                        VEGAN – we have hazelnut flapjack and banana date cake
+                        which are both completely vegan
+                      </li>
+                      <li>
+                        NUTS – there are nuts in several of our products and we
+                        handle nuts in the kitchen. NUT FREE cakes include
+                        croissants, pain au choc, brownies, cookies, lemon cake,
+                        banana cake, jam tart, cinnamon roll.
+                      </li>
+                      <li>
+                        SUGAR FREE – Our banana cake is made without refined
+                        sugars. Also our cashew/coconut balls in the fridge are
+                        made without refined sugars.
+                      </li>
+                    </ul>
+                    <ul
+                      css={css`
+                        padding-left: 40px;
+                        margin-bottom: 16px;
+                      `}
+                    >
+                      <li>
+                        <MultipleChoices
+                          name="nutshell7"
+                          options={['Haznault flapjack', 'Banana Cake', 'Both']}
+                          question="A customer is gluten free and vegan, what can you recommend?"
+                          ref={register({
+                            validate: value =>
+                              value === '2' || 'Your answers is not correct!',
+                          })}
+                        />
+                        <ErrorMessage
+                          errors={errors}
+                          name="nutshell7"
+                          as={<ErrorText />}
+                        />
+                      </li>
+                      <li>
+                        <MultipleChoices
+                          name="nutshell8"
+                          options={['Banana Cake', 'Cashew Balls', 'Both']}
+                          question="A customer wants a healthy snack, what can you recommend?"
+                          ref={register({
+                            validate: value =>
+                              value === '2' || 'Your answers is not correct!',
+                          })}
+                        />
+                        <ErrorMessage
+                          errors={errors}
+                          name="nutshell8"
+                          as={<ErrorText />}
+                        />
+                      </li>
+                      <li>
+                        <MultipleChoices
+                          name="nutshell9"
+                          options={['Inform Kitchen', 'Call 999']}
+                          question="A customer has told you they have a severe nut allergy, what should you do?"
+                          ref={register({
+                            validate: value =>
+                              value === '0' || 'Your answers is not correct!',
+                          })}
+                        />
+                        <ErrorMessage
+                          errors={errors}
+                          name="nutshell9"
+                          as={<ErrorText />}
+                        />
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+
+              <div>
+                <ul
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  <li>
+                    HOT FOOD
+                    <ul
+                      css={css`
+                        padding-left: 40px;
+                        margin-bottom: 16px;
+                        list-style-type: disc;
+                      `}
+                    >
+                      <li>
+                        TIMING - We make hot food to order fresh from the
+                        kitchen. It takes around 10 minutes to prepare. If a
+                        customer asks how long the food will take, it is best to
+                        say 10-15 minutes
+                      </li>
+                      <li>
+                        PROVENANCE AND WELFARE - we use free range eggs and
+                        meat, organic chicken, MSC approved tuna
+                      </li>
+                      <li>
+                        GLUTEN FREE – We have gluten free bread (contains egg)
+                        which can be used instead of the usual sourdough. We use
+                        a separate gluten free toaster. Our porridge is also
+                        gluten free.
+                      </li>
+                      <li>
+                        VEGAN – We have avocado toast, tofu scramble on toast
+                        and porridge, for our vegan customers. They can also
+                        choose the mushrooms on toast without the cheese. Our
+                        gluten free bread is not vegan.
+                      </li>
+                      <li>
+                        NUTS – The only hot food menu item containing nuts is
+                        the porridge. We can prepare it without nuts on asking.
+                      </li>
+                      <li>
+                        SUGAR FREE – Our banana cake is made without refined
+                        sugars. Also our cashew/coconut balls in the fridge are
+                        made without refined sugars.
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <ul
+                  css={css`
+                    margin-bottom: 16px;
+                  `}
+                >
+                  <li>
+                    Fridge Items
+                    <ul
+                      css={css`
+                        padding-left: 40px;
+                        margin-bottom: 16px;
+                      `}
+                    >
+                      <li>
+                        Please review the allergen matrix for information about
+                        the pots as this varies between shops
+                      </li>
+                      <li>
+                        <ul
+                          css={css`
+                            padding-left: 20px;
+                            margin-bottom: 16px;
+                            list-style-type: disc;
+                          `}
+                        >
+                          <li>
+                            VEGAN AND GLUTEN FREE – Our energy cashew/ coconut
+                            balls are both vegan and gluten free.
+                          </li>
+                          <li>
+                            SMOOTHIES – Are all gluten free, the berry smoothie
+                            contains dairy but the green and orange smoothies
+                            are also vegan. They are all nut free.
+                          </li>
+                        </ul>
+                      </li>
+                      <li>
+                        <ul
+                          css={css`
+                            padding-left: 20px;
+                            margin-bottom: 16px;
+                          `}
+                        >
+                          <li>
+                            <MultipleChoices
+                              name="nutshell10"
+                              options={[
+                                'Avocado toast with Mushroom',
+                                'Mushrooms on Toast',
+                                'Both',
+                              ]}
+                              question="A customer is vegetarian and really hungry, what can you recommend?"
+                              ref={register({
+                                validate: value =>
+                                  value === '2' ||
+                                  'Your answers is not correct!',
+                              })}
+                            />
+                            <ErrorMessage
+                              errors={errors}
+                              name="nutshell10"
+                              as={<ErrorText />}
+                            />
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="pb-3">
+              <h6 className="font-weight-bold">
+                <em>
+                  FOR MORE INFORMATION ON ALLERGENS AND INGREDIENTS PLEASE
+                  REVIEW THE ALLERGEN MATRIX AND INGREDIENT LIST, AVAILABLE
+                  BEHIND THE BAR
+                </em>
+              </h6>
+              <p>
+                If a customer makes a serious complaint, please inform your line
+                manager or supervisor. If there is a complaint about food taking
+                longer than expected, your line manager may be able to offer
+                them a free coffee. If there is a more serious complaint, for
+                example a hair in the food, we offer to refund the customer for
+                their food, or remake the dish. If the customer wishes to make a
+                formal complaint, there is a complaint form in the folder behind
+                the bar which your supervisor will fill in.
+              </p>
+              <div>
+                <MultipleChoices
+                  name="nutshell11"
+                  options={[
+                    'Inform Manager/Supervisor',
+                    'Report to Head Roaster',
+                    'Both',
+                  ]}
+                  question="A customer is unhappy with a food item we’ve sold them, who should you report this to?"
+                  ref={register({
+                    validate: value =>
+                      value === '0' || 'Your answers is not correct!',
+                  })}
+                />
+                <ErrorMessage
+                  errors={errors}
+                  name="nutshell11"
+                  as={<ErrorText />}
+                />
+              </div>
+            </div>
+            <div className="pb-3">
+              <h6 className="font-weight-bold">
+                REMEMBER IF YOU ARE NOT SURE ABOUT SOMETHING, PLEASE ASK ANOTHER
+                MEMBER OF YOUR TEAM, YOUR SUPERVISOR, OR SOMEONE FROM THE
+                KITCHEN. 
+              </h6>
+              <br />
+              <ol
+                css={css`
+                  padding-left: 20px;
+                `}
+              >
+                <li>
+                  <MultipleChoices
+                    name="nutshell12"
+                    options={['Haznault flapjack', 'Banana Cake', 'Both']}
+                    question="A customer is gluten free and vegan, what can you recommend?"
+                    ref={register({
+                      validate: value =>
+                        value === '2' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="nutshell12"
+                    as={<ErrorText />}
+                  />
+                </li>
+                <li>
+                  <MultipleChoices
+                    name="nutshell13"
+                    options={['Banana Cake', 'Cashew Balls', 'Both']}
+                    question="A customer wants a healthy snack, what can you recommend?"
+                    ref={register({
+                      validate: value =>
+                        value === '2' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="nutshell13"
+                    as={<ErrorText />}
+                  />
+                </li>
+                <li>
+                  <MultipleChoices
+                    name="nutshell14"
+                    options={['Inform Kitchen', 'Call 999']}
+                    question="A customer has told you they have a severe nut allergy, what should you do?"
+                    ref={register({
+                      validate: value =>
+                        value === '0' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="nutshell14"
+                    as={<ErrorText />}
+                  />
+                </li>
+                <li>
+                  <MultipleChoices
+                    name="nutshell15"
+                    options={[
+                      'Avocado toast with Mushroom',
+                      'Mushrooms on Toast',
+                      'Both',
+                    ]}
+                    question="A customer is vegetarian and really hungry, what can you recommend?"
+                    ref={register({
+                      validate: value =>
+                        value === '2' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="nutshell15"
+                    as={<ErrorText />}
+                  />
+                </li>
+                <li>
+                  <MultipleChoices
+                    name="nutshell16"
+                    options={[
+                      'Inform Manager/Supervisor',
+                      'Report to Head Roaster',
+                      'Both',
+                    ]}
+                    question="A customer is unhappy with a food item we’ve sold them, who should you report this to?"
+                    ref={register({
+                      validate: value =>
+                        value === '0' || 'Your answers is not correct!',
+                    })}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="nutshell16"
+                    as={<ErrorText />}
+                  />
+                </li>
+              </ol>
             </div>
           </div>
           <CenteredButton value="submit" type="submit" />
@@ -661,8 +621,7 @@ const MultipleChoices = React.forwardRef(
           font-weight: bold;
         `}
       >
-        <label className="form-check-label">{question}</label>
-        &nbsp; &nbsp;
+        <label className="form-check-label">{question}&nbsp;</label>
         {options.map((option, index) => (
           <div className="form-check form-check-inline" key={index}>
             <input

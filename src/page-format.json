@@ -116,11 +116,11 @@
     "riddorQ1": [
       {
         "value": "True",
-        "label":"work-related accidents which cause death;"
+        "label":"Work-related accidents which cause death;"
       },
       {
        "value": "True",
-       "label": "diagnosed cases of certain industrial diseases; and"
+       "label": "Diagnosed cases of certain industrial diseases; and"
       },
       {
         "value": "False",
@@ -150,29 +150,29 @@
     "riddorQ4": [
       {
         "value": "True",
-        "label": "permanent loss of sight or reduction of sight falls into the list of ‘specified injuries’"
+        "label": "Permanent loss of sight or reduction of sight falls into the list of ‘specified injuries’"
       },
       {
         "value": "False",
-        "label": "riddor includes potential health issues due to non-compliance"
+        "label": "Riddor includes potential health issues due to non-compliance"
       }
     ],
     "riddorQ7": [
       {
         "value": "True",
-        "label": "sore throat"
+        "label": "Sore throat"
       },
       {
         "value": "False",
-        "label": "occupational dermatitis;"
+        "label": "Occupational dermatitis;"
       },
       {
         "value": "False",
-        "label": "hand-arm vibration syndrome;"
+        "label": "Hand-arm vibration syndrome;"
       },
       {
         "value": "False",
-        "label": "any occupational cancer;"
+        "label": "Any occupational cancer;"
       }
     ],
     "riddorQ8": [
