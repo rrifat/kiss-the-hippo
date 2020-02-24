@@ -15,7 +15,11 @@ function Final() {
   return (
     <div className="col-12">
       <div className="d-flex flex-column align-items-center justify-content-center h-100">
-        <img src="images/kiss-hippo-logo.png" alt="trophy" className="fluid" />
+        <img
+          src={`${process.env.PUBLIC_URL}/images/kiss-hippo-logo.png`}
+          alt="trophy"
+          className="fluid"
+        />
         <h2
           style={{
             fontFamily: "'Lobster', cursive",
