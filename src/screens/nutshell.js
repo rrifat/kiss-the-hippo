@@ -55,7 +55,7 @@ export default function Nutshell({navigate}) {
               <MultipleChoices
                 name="nutshell1"
                 options={['Gisenw140', 'Loring S15 Falcon', 'Genio 6']}
-                question="What is the  name of our Roasting Machine:"
+                question="What is the  name of our Roasting Machine -"
                 ref={register({
                   validate: value =>
                     value === '1' || 'Your answers is not correct!',
@@ -78,7 +78,7 @@ export default function Nutshell({navigate}) {
               <MultipleChoices
                 name="nutshell2"
                 options={['Fair trade Association', 'Soil Association']}
-                question="Which organization has certified us for our organic roastery"
+                question="Which organization has certified us for our organic roastery -"
                 ref={register({
                   validate: value =>
                     value === '1' || 'Your answers is not correct!',
@@ -123,7 +123,7 @@ export default function Nutshell({navigate}) {
               <MultipleChoices
                 name="nutshell4"
                 options={['First mile', 'Bio bean']}
-                question="Which company s turning our coffee ground waste to fuel-"
+                question="Which company s turning our coffee ground waste to fuel -"
                 ref={register({
                   validate: value =>
                     value === '1' || 'Your answers is not correct!',
@@ -152,7 +152,7 @@ export default function Nutshell({navigate}) {
               <MultipleChoices
                 name="nutshell5"
                 options={['50% above', '20% above']}
-                question="How much we are dedicated above Fairtrade price of all of our coffee?  "
+                question="How much we are dedicated above Fairtrade price of all of our coffee?"
                 ref={register({
                   validate: value =>
                     value === '0' || 'Your answers is not correct!',
@@ -212,7 +212,7 @@ export default function Nutshell({navigate}) {
               <MultipleChoices
                 name="nutshell6"
                 options={['Bold & Creamy', 'Mellow & Balanced']}
-                question="Which Single Origin Type is NOT one of ours-"
+                question="Which Single Origin Type is NOT one of ours -"
                 ref={register({
                   validate: value =>
                     value === '0' || 'Your answers is not correct!',
@@ -623,7 +623,8 @@ const MultipleChoices = React.forwardRef(
       >
         <label className="form-check-label">{question}&nbsp;</label>
         {options.map((option, index) => (
-          <div className="form-check form-check-inline" key={index}>
+          <div className="form-check" key={index}>
+            <br />
             <input
               className="form-check-input"
               type="radio"
