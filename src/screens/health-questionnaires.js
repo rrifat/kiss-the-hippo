@@ -41,20 +41,26 @@ function HealthQuestionnaires({navigate}) {
         <h3 className="text-center my-3">{pageTitle.toUpperCase()}</h3>
         <FormContext {...methods}>
           <form onSubmit={onSubmit}>
-            <div className="form-group">
-              <label className="font-weight-bold">{subtitle}:</label>
-              <textarea
-                className="form-control"
-                id="historyOfIllness"
-                name="historyOfIllness"
-                ref={register({required: true})}
-                rows="3"
-              />
-            </div>
-            <div className="form-group">
-              <label className="font-weight-bold">{questionHeading}</label>
-              <small className="form-text text-muted">{`(${instruction})`}</small>
-            </div>
+            <ol style={{listStyleType: 'none', paddingLeft: '20px'}}>
+              <li>
+                <div className="form-group">
+                  <label className="font-weight-bold">{subtitle}:</label>
+                  <textarea
+                    className="form-control"
+                    id="historyOfIllness"
+                    name="historyOfIllness"
+                    ref={register({required: true})}
+                    rows="3"
+                  />
+                </div>
+              </li>
+              <li>
+                <div className="form-group">
+                  <label className="font-weight-bold">{questionHeading}</label>
+                  <small className="form-text text-muted">{`(${instruction})`}</small>
+                </div>
+              </li>
+            </ol>
             <ol>
               {questions.map((question, index) => (
                 <li key={index}>
@@ -118,16 +124,20 @@ function HealthQuestionnaires({navigate}) {
                 </div>
               ))}
             </ol>
-            <div className="form-group">
-              <label>
-                The next question only is to be answered by <b>female</b>{' '}
-                applicants where the proposed employment might present as a risk
-                during pregnancy.
-                <b>
-                  <em>You are not obliged to answer these questions.</em>
-                </b>
-              </label>
-            </div>
+            <ol style={{listStyleType: 'none', paddingLeft: '20px'}}>
+              <li>
+                <div className="form-group">
+                  <label>
+                    The next question only is to be answered by <b>female</b>{' '}
+                    applicants where the proposed employment might present as a
+                    risk during pregnancy.
+                    <b>
+                      <em>You are not obliged to answer these questions.</em>
+                    </b>
+                  </label>
+                </div>
+              </li>
+            </ol>
             <ol start="21">
               <li>
                 <div className="form-group">
@@ -232,31 +242,39 @@ function HealthQuestionnaires({navigate}) {
                 )}
               </li>
             </ol>
-            <div className="form-group">
-              <label className="font-weight-bold">Additional Comments:</label>
-              <textarea
-                className="form-control"
-                name="additionComments"
-                rows="3"
-                ref={register}
-              />
-            </div>
-            <div className="form-group form-check">
-              <input
-                type="checkbox"
-                name="acknowledgement"
-                className="form-check-input"
-                ref={register({required: true})}
-              />
-              <label className="form-check-label">
-                <b>
-                  <em>
-                    I read and understood and provided all the information
-                    above.
-                  </em>
-                </b>
-              </label>
-            </div>
+            <ol style={{listStyleType: 'none', paddingLeft: '20px'}}>
+              <li>
+                <div className="form-group">
+                  <label className="font-weight-bold">
+                    Additional Comments:
+                  </label>
+                  <textarea
+                    className="form-control"
+                    name="additionComments"
+                    rows="3"
+                    ref={register}
+                  />
+                </div>
+              </li>
+              <li>
+                <div className="form-group form-check">
+                  <input
+                    type="checkbox"
+                    name="acknowledgement"
+                    className="form-check-input"
+                    ref={register({required: true})}
+                  />
+                  <label className="form-check-label">
+                    <b>
+                      <em>
+                        I read and understood and provided all the information
+                        above.
+                      </em>
+                    </b>
+                  </label>
+                </div>
+              </li>
+            </ol>
             <CenteredButton type="submit" value="Continue" />
           </form>
         </FormContext>

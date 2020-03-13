@@ -23,27 +23,29 @@ function RightBox({children}) {
 
 function LeftBox({children}) {
   return (
-    <div
-      className="col-xl-7 col-12 h-100"
-      css={css`
-        overflow-y: scroll;
-        &::-webkit-scrollbar {
-          width: 0.8em;
-          background-color: #f6efed;
-        }
-        &::-webkit-scrollbar-thumb {
-          border-radius: 10px;
-          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          background-color: #EF3F29;
-        }
-        &::-webkit-scrollbar-track {
-          box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-          border-radius: 10px;
-          background-color: #f6efed;
-        }
-      `}
-    >
-      <div className="col-md-12" style={{margin: '0 auto'}}>
+    <div className="col-xl-7 col-12 h-100">
+      <div
+        className="col-xl-12"
+        css={css`
+          margin: 0 auto;
+          overflow-y: scroll;
+          height: 100%;
+          &::-webkit-scrollbar {
+            width: 0.8em;
+            background-color: #f6efed;
+          }
+          &::-webkit-scrollbar-thumb {
+            border-radius: 10px;
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            background-color: #ef3f29;
+          }
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            background-color: #f6efed;
+          }
+        `}
+      >
         {children}
       </div>
     </div>
