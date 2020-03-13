@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import {jsx} from '@emotion/core';
+import {jsx, css} from '@emotion/core';
 import {CenteredButton, DivWithScroll} from '../components/lib';
 import {useAuth} from '../context/auth-context';
 import {useForm} from 'react-hook-form';
@@ -102,10 +102,16 @@ export default function EmployeeDiscount({navigate}) {
           <div className="col-sm-9">
             <form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-group">
-                <small>
-                  Enter your date of Birth to confirm acknowledgement of the
-                  information s above.
-                </small>
+                <p>
+                  <mark
+                    css={css`
+                      background: #ffff00;
+                    `}
+                  >
+                    Enter your date of Birth to confirm acknowledgement of the
+                    information s above.
+                  </mark>
+                </p>
                 <input
                   type="date"
                   className="form-control"

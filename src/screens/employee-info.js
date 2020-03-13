@@ -91,7 +91,7 @@ function EmployeeInfo({navigate}) {
   return (
     <React.Fragment>
       <LeftBox>
-        <div className="sign-up-section">
+        <div className="info-screen-left">
           <div className="row">
             <div className="col-md-12">
               <h2 className="text-center">
@@ -271,11 +271,11 @@ function EmployeeInfo({navigate}) {
                       as={<ErrorText />}
                     />
                   </div>
-                  <div className="form-group col-lg-6">
+                  <div className="form-group col-md-6">
                     <Input
                       type="number"
                       name="salaryPerHourPay"
-                      label="Salary / Hourly Pay"
+                      label="Salary/Hourly Pay"
                       ref={register}
                     />
                     <ErrorMessage
@@ -286,11 +286,11 @@ function EmployeeInfo({navigate}) {
                   </div>
                 </div>
                 <div className="form-row">
-                  <div className="form-group col-lg-6">
+                  <div className="form-group col-lg-8">
                     <Input
                       type="text"
                       name="employeeStatusFlexibleCasual"
-                      label="Employee Status - Flexible / Casual"
+                      label="Employee Status-Flexible/Casual"
                       ref={register}
                     />
                     <ErrorMessage
@@ -299,7 +299,7 @@ function EmployeeInfo({navigate}) {
                       as={<ErrorText />}
                     />
                   </div>
-                  <div className="form-group col-lg-6">
+                  <div className="form-group col-lg-4">
                     <Input type="text" name="contractedHours" ref={register} />
                     <ErrorMessage
                       errors={errors}
@@ -393,7 +393,7 @@ function EmployeeInfo({navigate}) {
                 </ul>
 
                 <div className="form-row">
-                  <div className="form-group col-lg-4">
+                  <div className="form-group col-lg-6">
                     <Input
                       type="text"
                       name="reportingManagerTitle"
@@ -405,7 +405,7 @@ function EmployeeInfo({navigate}) {
                       as={<ErrorText />}
                     />
                   </div>
-                  <div className="form-group col-lg-4">
+                  <div className="form-group col-lg-6">
                     <Input type="text" name="nextOfKinName" ref={register} />
                     <ErrorMessage
                       errors={errors}
@@ -413,18 +413,18 @@ function EmployeeInfo({navigate}) {
                       as={<ErrorText />}
                     />
                   </div>
-                  <div className="form-group col-lg-4">
-                    <Input
-                      type="text"
-                      name="relationshipWithNextOfKin"
-                      ref={register}
-                    />
-                    <ErrorMessage
-                      errors={errors}
-                      name="relationshipWithNextOfKin"
-                      as={<ErrorText />}
-                    />
-                  </div>
+                </div>
+                <div className="form-group">
+                  <Input
+                    type="text"
+                    name="relationshipWithNextOfKin"
+                    ref={register}
+                  />
+                  <ErrorMessage
+                    errors={errors}
+                    name="relationshipWithNextOfKin"
+                    as={<ErrorText />}
+                  />
                 </div>
                 <div className="form-row">
                   <div className="form-group col-lg-6">
@@ -453,7 +453,7 @@ function EmployeeInfo({navigate}) {
       <RightBox>
         <div>
           <img
-            src={`${process.env.PUBLIC_URL}/images/KTH_Pantone.jpg`}
+            src={`${process.env.PUBLIC_URL}/images/kiss-hippo-logo.png`}
             alt="KTH Pantone"
             className="img-fluid"
           />

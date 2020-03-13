@@ -1,20 +1,27 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
+import React from 'react';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 
 const proofOfAddress = [
-  'Bank /Credit Card /Mortgage statement',
-  'Rental agreement paper copy only',
-  'Letter from university dated within last three months',
-  'a copy of p45 dated within last three month',
-  'a pay slip dated within last three month',
-  'letter from HMRC with NI number dated within last three month',
-  'NI letter from HMRC',
-  'Utility bill',
-  'Driving license',
+  {name: 'bank', label: 'Bank /Credit Card /Mortgage statement'},
+  {name: 'rental', label: 'Rental agreement paper copy only'},
+  {
+    name: 'letter',
+    label: 'Letter from university dated within last three months',
+  },
+  {name: 'p45', label: 'a copy of p45 dated within last three month'},
+  {name: 'paySlip', label: 'a pay slip dated within last three month'},
+  {
+    name: 'hmrc',
+    label: 'letter from HMRC with NI number dated within last three month',
+  },
+  {name: 'ni', label: 'NI letter from HMRC'},
+  {name: 'bill', label: 'Utility bill'},
+  {name: 'license', label: 'Driving license'},
 ];
 
 export default function Others({navigate}) {
@@ -23,11 +30,10 @@ export default function Others({navigate}) {
     setPage,
     userData: {user},
   } = useAuth();
-  let selectedCheckboxes = new Set();
+  // let selectedCheckboxes = new Set();
   const {handleSubmit, register, errors} = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
-    data['others3'] = [...selectedCheckboxes];
     itemClient
       .create({user, page, data})
       .then(({data: response}) => {
@@ -39,13 +45,7 @@ export default function Others({navigate}) {
       })
       .catch(err => console.log(err.response));
   };
-  const handleChange = label => {
-    if (selectedCheckboxes.has(label)) {
-      selectedCheckboxes.delete(label);
-    } else {
-      selectedCheckboxes.add(label);
-    }
-  };
+
   return (
     <DivWithScroll className="col-sm-12 h-100">
       <div className="container">
@@ -69,18 +69,17 @@ export default function Others({navigate}) {
                   </li>
                   <li>NI letter from HMRC</li>
                   <li>NI card from HMRC</li>
-                  <li>
-                    <div className="form-group">
-                      <label>Ohter</label>
-                      <input
-                        type="text"
-                        className="form-control"
-                        name="others1"
-                        ref={register({required: true})}
-                      />
-                    </div>
-                  </li>
+                  <li>Others</li>
                 </ol>
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    name="others1"
+                    placeholder="Please write which option you have chosen from above"
+                    ref={register({required: true})}
+                  />
+                </div>
               </div>
               <div>
                 <h6 className="font-weight-bold">Future Plans:</h6>
@@ -110,16 +109,18 @@ export default function Others({navigate}) {
                       padding-left: 25px;
                     `}
                   >
-                    {proofOfAddress.map((label, index) => (
+                    {proofOfAddress.map(({name, label}, index) => (
                       <li key={index}>
                         <div className="form-group">
                           <label className="form-check-label">
                             <input
                               className="form-check-input"
-                              type="checkbox"
+                              type="radio"
                               name="others3"
-                              ref={register({required: 'Please confirm'})}
-                              onChange={() => handleChange(label)}
+                              value={label}
+                              ref={register({
+                                required: 'Please confirm',
+                              })}
                             />
                             {label}
                           </label>
@@ -160,10 +161,16 @@ export default function Others({navigate}) {
               </div>
               <div className="form-group row">
                 <div className="col-12">
-                  <small>
-                    Please enter your date of birth to confirm your
-                    acknowledgement of above information.
-                  </small>
+                  <p>
+                    <mark
+                      css={css`
+                        background: #ffff00;
+                      `}
+                    >
+                      Please enter your date of birth to confirm your
+                      acknowledgement of above information.
+                    </mark>
+                  </p>
                   <input
                     type="date"
                     name="ack"

@@ -435,10 +435,16 @@ export default function SafetyTwo() {
         <br />
         <br />
         <div>
-          <small>
-            Enter your date of Birth to confirm acknowledgement of the
-            information s above.
-          </small>
+          <p>
+            <mark
+              css={css`
+                background: #ffff00;
+              `}
+            >
+              Enter your date of Birth to confirm acknowledgement of the
+              information s above.
+            </mark>
+          </p>
           <input
             type="date"
             className="form-control"

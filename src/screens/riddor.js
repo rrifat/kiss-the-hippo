@@ -1,5 +1,5 @@
 /**@jsx jsx */
-import {jsx} from '@emotion/core';
+import {jsx, css} from '@emotion/core';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
 import * as itemClient from '../clients/item-client';
@@ -622,9 +622,15 @@ export default function Riddor({navigate}) {
                 </b>
               </p>
               <div>
-                <small>
-                  Enter your date of birth as acknowledgement of riddor policy
-                </small>
+                <p>
+                  <mark
+                    css={css`
+                      background: #ffff00;
+                    `}
+                  >
+                    Enter your date of birth as acknowledgement of riddor policy
+                  </mark>
+                </p>
                 <input
                   type="date"
                   className="form-control"
