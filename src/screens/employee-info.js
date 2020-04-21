@@ -274,6 +274,8 @@ function EmployeeInfo({navigate}) {
                   <div className="form-group col-md-6">
                     <Input
                       type="number"
+                      step="any"
+                      min="0"
                       name="salaryPerHourPay"
                       label="Salary/Hourly Pay"
                       ref={register}

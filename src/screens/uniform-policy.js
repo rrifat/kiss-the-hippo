@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
-import {useForm, ErrorMessage} from 'react-hook-form';
+import {CenteredButton, DivWithScroll} from '../components/lib';
+import {useForm} from 'react-hook-form';
 import * as itemClient from '../clients/item-client';
 import {useAuth} from '../context/auth-context';
 
@@ -12,7 +12,7 @@ export default function UniformPolicy({navigate}) {
     userData: {user},
   } = useAuth();
 
-  const {handleSubmit, register, errors} = useForm();
+  const {handleSubmit, register} = useForm();
   const onSubmit = (data, e) => {
     e.preventDefault();
     itemClient
@@ -91,6 +91,26 @@ export default function UniformPolicy({navigate}) {
                 the event of loss of items, we have the contractual right to
                 duduct such costs from your last pay.
               </p>
+            </div>
+            <div className="col-sm-9">
+              <div className="form-group">
+                <p>
+                  <mark
+                    css={css`
+                      background: #ffff00;
+                    `}
+                  >
+                    Enter your date of Birth to confirm acknowledgement of the
+                    information s above.
+                  </mark>
+                </p>
+                <input
+                  type="date"
+                  className="form-control"
+                  name="ack"
+                  ref={register({required: true})}
+                />
+              </div>
             </div>
             <CenteredButton type="submit" value="submit" />
           </form>

@@ -1,6 +1,5 @@
 /**@jsx jsx */
 import {jsx, css} from '@emotion/core';
-import React from 'react';
 import {CenteredButton, DivWithScroll, ErrorText} from '../components/lib';
 import {useForm, ErrorMessage} from 'react-hook-form';
 import * as itemClient from '../clients/item-client';

@@ -38,6 +38,9 @@ export default function Nutshell({navigate}) {
             `}
           >
             <div className="pt-5 pb-3">
+              <div className="pb-3">
+                <h3 className="font-weight-bold text-center">NUTSHELL</h3>
+              </div>
               <h5 className="font-weight-bold">OUR COFFEE AND EQUIPMENTS:</h5>
               <p>
                 With seasonality in mind, our mission is to ethically source
@@ -282,61 +285,6 @@ export default function Nutshell({navigate}) {
                         made without refined sugars.
                       </li>
                     </ul>
-                    <ul
-                      css={css`
-                        padding-left: 40px;
-                        margin-bottom: 16px;
-                      `}
-                    >
-                      <li>
-                        <MultipleChoices
-                          name="nutshell7"
-                          options={['Haznault flapjack', 'Banana Cake', 'Both']}
-                          question="A customer is gluten free and vegan, what can you recommend?"
-                          ref={register({
-                            validate: value =>
-                              value === '2' || 'Your answers is not correct!',
-                          })}
-                        />
-                        <ErrorMessage
-                          errors={errors}
-                          name="nutshell7"
-                          as={<ErrorText />}
-                        />
-                      </li>
-                      <li>
-                        <MultipleChoices
-                          name="nutshell8"
-                          options={['Banana Cake', 'Cashew Balls', 'Both']}
-                          question="A customer wants a healthy snack, what can you recommend?"
-                          ref={register({
-                            validate: value =>
-                              value === '2' || 'Your answers is not correct!',
-                          })}
-                        />
-                        <ErrorMessage
-                          errors={errors}
-                          name="nutshell8"
-                          as={<ErrorText />}
-                        />
-                      </li>
-                      <li>
-                        <MultipleChoices
-                          name="nutshell9"
-                          options={['Inform Kitchen', 'Call 999']}
-                          question="A customer has told you they have a severe nut allergy, what should you do?"
-                          ref={register({
-                            validate: value =>
-                              value === '0' || 'Your answers is not correct!',
-                          })}
-                        />
-                        <ErrorMessage
-                          errors={errors}
-                          name="nutshell9"
-                          as={<ErrorText />}
-                        />
-                      </li>
-                    </ul>
                   </li>
                 </ul>
               </div>
@@ -428,36 +376,6 @@ export default function Nutshell({navigate}) {
                           </li>
                         </ul>
                       </li>
-                      <li>
-                        <ul
-                          css={css`
-                            padding-left: 20px;
-                            margin-bottom: 16px;
-                          `}
-                        >
-                          <li>
-                            <MultipleChoices
-                              name="nutshell10"
-                              options={[
-                                'Avocado toast with Mushroom',
-                                'Mushrooms on Toast',
-                                'Both',
-                              ]}
-                              question="A customer is vegetarian and really hungry, what can you recommend?"
-                              ref={register({
-                                validate: value =>
-                                  value === '2' ||
-                                  'Your answers is not correct!',
-                              })}
-                            />
-                            <ErrorMessage
-                              errors={errors}
-                              name="nutshell10"
-                              as={<ErrorText />}
-                            />
-                          </li>
-                        </ul>
-                      </li>
                     </ul>
                   </li>
                 </ul>
@@ -481,26 +399,6 @@ export default function Nutshell({navigate}) {
                 formal complaint, there is a complaint form in the folder behind
                 the bar which your supervisor will fill in.
               </p>
-              <div>
-                <MultipleChoices
-                  name="nutshell11"
-                  options={[
-                    'Inform Manager/Supervisor',
-                    'Report to Head Roaster',
-                    'Both',
-                  ]}
-                  question="A customer is unhappy with a food item we’ve sold them, who should you report this to?"
-                  ref={register({
-                    validate: value =>
-                      value === '0' || 'Your answers is not correct!',
-                  })}
-                />
-                <ErrorMessage
-                  errors={errors}
-                  name="nutshell11"
-                  as={<ErrorText />}
-                />
-              </div>
             </div>
             <div className="pb-3">
               <h6 className="font-weight-bold">
