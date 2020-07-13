@@ -107,7 +107,7 @@
       {
         "name": "boxQ6",
         "question": "With reference to the Disability Discrimination Act, do you have any physical or mental impairment, which significantly affects your daily living?",
-        "note":"(If you answer ‘Yes’ to question 20, you may be sent a supplementary health questionnaire for completion so that the medical staff can assess appropriate and reasonable work adjustments for you)",
+        "note":"(If you answer 'Yes' to question 20, you may be sent a supplementary health questionnaire for completion so that the medical staff can assess appropriate and reasonable work adjustments for you)",
         "type": "radio"
       }
     ]
@@ -150,7 +150,7 @@
     "riddorQ4": [
       {
         "value": "True",
-        "label": "Permanent loss of sight or reduction of sight falls into the list of ‘specified injuries’"
+        "label": "Permanent loss of sight or reduction of sight falls into the list of 'specified injuries'"
       },
       {
         "value": "False",

@@ -147,10 +147,9 @@ export default function Others({navigate}) {
                     You need to register yourself to complete the course.
                   </p>
                   <p>
-                    This is a course provided by our Chemical manufacturer
-                    Innuscience . To complete this course you need to download
-                    Innusicience App in your mobile phone and select the ‘Front
-                    of House’ option.
+                    COSHH provided by our Chemical manufacturer Innuscience . To
+                    complete this course you need to download Innusicience App
+                    in your mobile phone and select the ‘Front of House’ option.
                   </p>
                   <p>
                     You need to provide the certificate of these courses before

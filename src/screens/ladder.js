@@ -33,29 +33,31 @@ export default function Ladder({navigate}) {
       <div className="container">
         <div className="row">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div class="col-sm-9 ">
+            <div className="col-sm-9 ">
               <div className="pt-5 pb-3">
-                <h3 class="font-weight-bold text-center mb-3">Ladder Policy</h3>
+                <h3 className="font-weight-bold text-center mb-3">
+                  Ladder Policy
+                </h3>
               </div>
               <p>Before you use a ladder, you must check for;</p>
-              <h6 class="text-uppercase">GENERAL CONDITION</h6>
+              <h6 className="text-uppercase">GENERAL CONDITION</h6>
               <p>
                 -Free from signs of damage likely to compromise the ladder when
                 in use.
               </p>
               <h6>
-                <span class="text-uppercase">INTERLOCK </span>(if there is one)
+                <span className="text-uppercase">INTERLOCK </span>(if there is one)
               </h6>
               <p>-Moves and locks into correct position.</p>
             </div>
-            <div class="col-sm-9 my-5">
+            <div className="col-sm-9 my-5">
               <img
                 src={`${process.env.PUBLIC_URL}/images/ladder2.jpg`}
                 alt="ladder"
               />
             </div>
-            <div class="col-sm-9 mb-3">
-              <h6 class="pb-3">Set-up for leaning ladders</h6>
+            <div className="col-sm-9 mb-3">
+              <h6 className="pb-3">Set-up for leaning ladders</h6>
               <ul>
                 <li>Do a daily pre-use check (include ladder feet)</li>
                 <li>Secure it </li>
@@ -71,12 +73,12 @@ export default function Ladder({navigate}) {
                 <li>Floors should be clean, not slippery</li>
               </ul>
             </div>
-            <div class="col-sm-9 mb-5">
+            <div className="col-sm-9 mb-5">
               <strong>
                 <p>
                   Which one is not important for Set-up for leaning ladders-
                 </p>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   {options['ladderQ1'].map((option, index) => (
                     <li key={index}>
                       <input
@@ -99,8 +101,8 @@ export default function Ladder({navigate}) {
                 </ul>
               </strong>
             </div>
-            <div class="col-sm-9 mb-3">
-              <h6 class="pb-3">Leaning ladders in-use</h6>
+            <div className="col-sm-9 mb-3">
+              <h6 className="pb-3">Leaning ladders in-use</h6>
               <ul>
                 <li>Short duration work (maximum 30 minutes)</li>
                 <li>Light work (up to 10 kg)</li>
@@ -119,10 +121,10 @@ export default function Ladder({navigate}) {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-9 mb-5">
+            <div className="col-sm-9 mb-5">
               <strong>
                 <p>What ‘s the maximum weight allowance in leaning ladder-</p>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   {options['ladderQ2'].map((option, index) => (
                     <li key={index}>
                       <input
@@ -145,8 +147,8 @@ export default function Ladder({navigate}) {
                 </ul>
               </strong>
             </div>
-            <div class="col-sm-9 mb-5">
-              <h6 class="pb-3">Set-up for stepladders</h6>
+            <div className="col-sm-9 mb-5">
+              <h6 className="pb-3">Set-up for stepladders</h6>
               <ul>
                 <li>Daily pre-use check (feet included)</li>
                 <li>Ensure there is space to fully open</li>
@@ -155,8 +157,8 @@ export default function Ladder({navigate}) {
                 <li>Floors should be clean, not slippery</li>
               </ul>
             </div>
-            <div class="col-sm-9 mb-3">
-              <h6 class="pb-3">Stepladders in-use</h6>
+            <div className="col-sm-9 mb-3">
+              <h6 className="pb-3">Stepladders in-use</h6>
               <ul>
                 <li>Short duration work (maximum 30 minutes)</li>
                 <li>Light work (up to 10 kg)</li>
@@ -176,13 +178,13 @@ export default function Ladder({navigate}) {
                 </li>
               </ul>
             </div>
-            <div class="col-sm-9 mb-3">
-              <p class="pb-3">
+            <div className="col-sm-9 mb-3">
+              <p className="pb-3">
                 Loft ladder must be accompanied by two persons at all time.
               </p>
               <strong>
                 <p>How many people are required to use lost ladder-?</p>
-                <ul class="list-unstyled">
+                <ul className="list-unstyled">
                   {options['ladderQ3'].map((option, index) => (
                     <li key={index}>
                       <input
